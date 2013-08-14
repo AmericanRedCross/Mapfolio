@@ -1,3 +1,43 @@
+var center = new L.LatLng(30, 30);
+var bounds = new L.LatLngBounds([90, 200], [-80, -200]);
+worldcountries = [];
+
+var greyStyle = {
+    color: '#fff',
+    weight: 1,
+    fillColor: '#d7d7d8',
+    fillOpacity: 1,
+};
+
+var map = L.map('map', {
+    center: center,
+    zoom: 0,
+    attributionControl: false,
+    zoomControl: false,
+    maxBounds: bounds
+    // dragging: false
+});
+
+function getWorld() {
+    $.ajax({
+        type: 'GET',
+        url: 'data/worldcountries.json',
+        contentType: 'application/json',
+        dataType: 'json',
+        timeout: 10000,
+        success: function(json) {
+            worldcountries = json;
+            worldcountriesLayer = L.geoJson(worldcountries, {
+        		style: greyStyle,        		
+    		});
+    		worldcountriesLayer.addTo(map);
+        },
+        error: function(e) {
+            console.log(e);
+        }
+    });
+}
+
 function toggleSector (sectorClass, element) {
 	var status = $(element).children();
 	if ($(status).hasClass("glyphicon-ok")){
@@ -40,3 +80,6 @@ function callModal (item) {
 
 	$('#myModal').modal();
 }
+
+
+getWorld();

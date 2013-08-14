@@ -7,6 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="American Red Cross">
     <meta name="google-translate-customization" content="dd5207c171a5d11a-29d1c9c17ff34632-g6f9aa177fdeafd13-1a"></meta>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+ <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+ <![endif]-->
     <link href="css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
@@ -42,13 +46,12 @@ function googleTranslateElementInit() {
     </div>
 
     
-      <div class="row" style="margin:0px;">        
-          <div class="jumbotron" style="width:100%; height:500px; padding:20px; margin:0;">
-            <a href="http://redcross.org"><img src="img/redcross-logo.png" class="arclogo" /></a>
-            <div class="page-header" style="text-align:center;"><h2><i>map goes here</i></h2></div>
-          </div>
-      </div>
-      <hr style="margin-top:15px;">
+      <div>   
+          
+        <a href="http://redcross.org"><img src="img/redcross-logo.png" id="arclogo"/></a>
+        <div id="map"></div>           
+          
+      </div>      
 
 <div id="myModal" class="modal fade">
   <div class="modal-dialog">
@@ -68,16 +71,18 @@ function googleTranslateElementInit() {
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
-      <b>Filter by Regions:</b>
+      <div class="container">
+      <b>Filter by Extent:</b>
       <button class="btn btn-small" type="button" onclick="toggleRegion('.LAC', this);">LAC <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <button class="btn btn-small" type="button" onclick="toggleRegion('.AME', this);">AME <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <button class="btn btn-small" type="button" onclick="toggleRegion('.AFRICA', this);">AFRICA <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small" type="button" onclick="toggleRegion('.GLOBAL', this);">Global <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>    
       <b>Filter by Map Sectors:</b>
       <button class="btn btn-small" type="button" onclick="toggleSector('.sector1', this);">Map sector 1 <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <button class="btn btn-small" type="button" onclick="toggleSector('.sector2', this);">Map sector 2 <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <button class="btn btn-small" type="button" onclick="toggleSector('.sector3', this);">Map sector 3 <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <hr style="margin-bottom:0;">
+    </div>
       <div class="container">
       <div class="row">
         <div class="col-sm-3 sector1 AFRICA">
@@ -88,24 +93,24 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 AME">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
+        <div class="col-sm-3 sector1 LAC">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/dpPrjsHaiti_thumb.png" alt="">
             <div class="caption">            
-              <h4>Ipsum mollis: <small>AME, sector 1 here</small></h4>        
+              <h4>Disaster Preparedness Projects in Haiti <small>LAC, sector 1 here</small></h4>        
             </div>
           </a>
         </div>
         <div class="col-sm-3 sector2 AME">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/campecheSatellite_thumb.png" alt="">
             <div class="caption">            
-              <h4>Ipsum mollis: <small>AME, sector 2 here</small></h4>        
+              <h4>Cempeche Satellite <small>AME, sector 2 here</small></h4>        
             </div>
           </a>
         </div>
         <div class="col-sm-3 sector2 LAC">
-          <a href="#" class="thumbnail">
+          <a onclick="callModal(this);" class="thumbnail">
             <img src="img/carrefour_thumb.png" alt="">
             <div class="caption">            
               <h4>Outside Organizations Active in Carrefour Feuilles <small>(LAC, sector 2 here)</small></h4>        
@@ -113,35 +118,35 @@ function googleTranslateElementInit() {
           </a>
         </div>
 
-        <div class="col-sm-3 sector3 AFRICA">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
+        <div class="col-sm-3 sector3 LAC">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/LARRAcommunities_thumb.png" alt="">
             <div class="caption">            
-              <h4>Ipsum mollis: <small>Africa, sector 3 here</small></h4>        
+              <h4>LARRA I and II Program Central America <small>LAC, sector 3 here</small></h4>        
             </div>
           </a>
         </div>
         <div class="col-sm-3 sector2">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/myanmar_thumb.png" alt="">
             <div class="caption">            
-              <h4>Ipsum mollis: <small>sector 2 here</small></h4>        
+              <h4>Myanmar <small>sector 2 here</small></h4>        
             </div>
           </a>
         </div>
         <div class="col-sm-3">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/ARC_PaP_thumb.png" alt="">
             <div class="caption">            
-              <h4>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h4>        
+              <h4>American Red Cross Operations in Greater Port-Au-Prince <small>penatibus ante bibendum</small></h4>        
             </div>
           </a>
         </div>
         <div class="col-sm-3">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/sierraLeone_thumb.png" alt="">
             <div class="caption">            
-              <h4>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h4>        
+              <h4>Sierra Leone Red Cross Volunteers vs. Reported Cholera Cases <small>penatibus ante bibendum</small></h4>        
             </div>
           </a>
         </div>
@@ -158,6 +163,7 @@ function googleTranslateElementInit() {
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
 
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 
