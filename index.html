@@ -7,42 +7,24 @@
     <meta name="description" content="">
     <meta name="author" content="American Red Cross">
     <meta name="google-translate-customization" content="dd5207c171a5d11a-29d1c9c17ff34632-g6f9aa177fdeafd13-1a"></meta>
-
+    <link href="css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
+    <link href="css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png">
       
-      body{
-        padding-top:70px;
-        margin: 0 20px;
-
-      }
-      .navbar-brand {
-        max-width: none;
-      }
-      .thumbnail{
-        margin-top: 15px;
-        margin-bottom: 15px;
-      }
-      .thumbnail:hover {
-        text-decoration: none;
-      }
-
-      @media (max-width: 980px) {
-        /* Enable use of floated navbar text */
-        .navbar-text.pull-right {
-          float: none;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-      }
-    </style>  
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-    <![endif]-->
-
   </head>
+
+  <style>
+
+/*  .modal-dialog {
+    right: auto;
+    left: auto;
+    width: 100%;
+    height:100%;
+    padding: 30px;    
+  }*/
+
+  </style>
 
   <body>
 
@@ -66,49 +48,84 @@ function googleTranslateElementInit() {
             <div class="page-header" style="text-align:center;"><h2><i>map goes here</i></h2></div>
           </div>
       </div>
+      <hr style="margin-top:15px;">
+
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a id="downloadPDF" href="#" target="_blank" class="btn btn-primary">Download PDF</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+      <b>Filter by Regions:</b>
+      <button class="btn btn-small" type="button" onclick="toggleRegion('.LAC', this);">LAC <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small" type="button" onclick="toggleRegion('.AME', this);">AME <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small" type="button" onclick="toggleRegion('.AFRICA', this);">AFRICA <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <b>Filter by Map Sectors:</b>
+      <button class="btn btn-small" type="button" onclick="toggleSector('.sector1', this);">Map sector 1 <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small" type="button" onclick="toggleSector('.sector2', this);">Map sector 2 <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small" type="button" onclick="toggleSector('.sector3', this);">Map sector 3 <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <hr style="margin-bottom:0;">
       <div class="container">
       <div class="row">
-        <div class="col-lg-3">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
+        <div class="col-sm-3 sector1 AFRICA">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/floodRisk_thumb.png" alt="">
             <div class="caption">            
-              <h3>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h3>        
+              <h4>Flood Risk in the Manafwa River Basin <small>(Africa, sector 1 here)</small></h4>        
             </div>
           </a>
         </div>
-        <div class="col-lg-3">
+        <div class="col-sm-3 sector1 AME">
           <a href="#" class="thumbnail">
             <img src="http://placehold.it/300x200" alt="">
             <div class="caption">            
-              <h3>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h3>        
+              <h4>Ipsum mollis: <small>AME, sector 1 here</small></h4>        
             </div>
           </a>
         </div>
-        <div class="col-lg-3">
+        <div class="col-sm-3 sector2 AME">
           <a href="#" class="thumbnail">
             <img src="http://placehold.it/300x200" alt="">
             <div class="caption">            
-              <h3>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h3>        
+              <h4>Ipsum mollis: <small>AME, sector 2 here</small></h4>        
             </div>
           </a>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3 sector2 LAC">
           <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
+            <img src="img/carrefour_thumb.png" alt="">
             <div class="caption">            
-              <h3>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h3>        
+              <h4>Outside Organizations Active in Carrefour Feuilles <small>(LAC, sector 2 here)</small></h4>        
             </div>
           </a>
         </div>
-      </div> <!-- /row  -->   
 
-      <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-3 sector3 AFRICA">
           <a href="#" class="thumbnail">
             <img src="http://placehold.it/300x200" alt="">
             <div class="caption">            
-              <h3>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h3>        
+              <h4>Ipsum mollis: <small>Africa, sector 3 here</small></h4>        
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-3 sector2">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/300x200" alt="">
+            <div class="caption">            
+              <h4>Ipsum mollis: <small>sector 2 here</small></h4>        
             </div>
           </a>
         </div>
@@ -116,7 +133,7 @@ function googleTranslateElementInit() {
           <a href="#" class="thumbnail">
             <img src="http://placehold.it/300x200" alt="">
             <div class="caption">            
-              <h3>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h3>        
+              <h4>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h4>        
             </div>
           </a>
         </div>
@@ -124,15 +141,7 @@ function googleTranslateElementInit() {
           <a href="#" class="thumbnail">
             <img src="http://placehold.it/300x200" alt="">
             <div class="caption">            
-              <h3>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h3>        
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-3">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
-            <div class="caption">            
-              <h3>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h3>        
+              <h4>Ipsum mollis: <small>penatibus ante bibendum montes tincidunt tortor turpis neque</small></h4>        
             </div>
           </a>
         </div>
@@ -148,8 +157,9 @@ function googleTranslateElementInit() {
     <!-- jQuery -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
-    <!-- all compiled plugins -->
+
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 
   </body>
 </html>
