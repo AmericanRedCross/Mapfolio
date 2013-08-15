@@ -71,6 +71,11 @@ function getCentroids(){
 
 function markers2map () {
 
+var markers = new L.MarkerClusterGroup();
+
+markers.addLayer(L.marker([175.3107, -37.7784]));
+
+// map.addLayer(markers);
 
 }
 
