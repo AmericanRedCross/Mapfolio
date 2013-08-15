@@ -4,7 +4,6 @@ var bounds = new L.LatLngBounds([90, 200], [-80, -200]);
 worldcountries = [];
 centroids = [];
 
-var markers = new L.MarkerClusterGroup();
 
 var greyStyle = {
     color: '#fff',
@@ -71,11 +70,9 @@ function getCentroids(){
 
 function markers2map () {
 
-var markers = new L.MarkerClusterGroup();
-
-markers.addLayer(L.marker([175.3107, -37.7784]));
-
-// map.addLayer(markers);
+    // var markers = new L.MarkerClusterGroup();
+    // markers.addLayer(L.marker([0, 0]));
+    // map.addLayer(markers);
 
 }
 
