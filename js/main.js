@@ -44,7 +44,7 @@ function getWorld() {
             geojson = L.geoJson(worldcountries,{
                 style: greyStyle
             }).addTo(countries);
-
+            getCentroids();
         },
         error: function(e) {
             console.log(e);
@@ -70,24 +70,9 @@ function getCentroids(){
 }
 
 function markers2map () {
-    markers = new L.MarkerClusterGroup();
-    marker = L.geoJson(centroids, {
-        pointToLayer: function (feature, latlng) {
-            return L.circleMarker(latlng, centroidOptions);
-        },
-     // onEachFeature: markerEvents
-    });
-    markers.addLayer(marker);
-    map.addLayer(markers);
-
-    // centroidsLayer = L.geoJson(centroids,{
-    //  style: centroidOptions
-    // });
-    // centroidsLayer.addTo(map);       
 
 
 }
-
 
 
 function toggleSector (sectorClass, element) {
