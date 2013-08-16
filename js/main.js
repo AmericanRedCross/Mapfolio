@@ -1,8 +1,8 @@
 var geojson;
 var center = new L.LatLng(30, 30);
 var bounds = new L.LatLngBounds([90, 200], [-80, -200]);
-worldcountries = [];
-centroids = [];
+var worldcountries = [];
+var centroids = [];
 
 
 var greyStyle = {
@@ -69,6 +69,12 @@ function getCentroids(){
 }
 
 function markers2map () {
+
+    L.geoJson(centroids,{
+        pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng,centroidOptions);
+        }    
+    }).addTo(map);
 
     // var markers = new L.MarkerClusterGroup();
     // markers.addLayer(L.marker([0, 0]));
