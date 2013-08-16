@@ -93,7 +93,7 @@ function toggleSector (sectorClass, element) {
 		$(status).removeClass("glyphicon-remove");
 		$(status).addClass("glyphicon-ok");
 		$(sectorClass).show();
-	}
+	}    
 }
 
 function toggleRegion (regionClass, element) {
@@ -106,7 +106,7 @@ function toggleRegion (regionClass, element) {
 		$(status).removeClass("glyphicon-remove");
 		$(status).addClass("glyphicon-ok");
 		$(regionClass).show();
-	}
+	}    
 }
 
 function callModal (item) {

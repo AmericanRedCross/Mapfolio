@@ -18,6 +18,27 @@ body{
   border-bottom-style: solid;
 }
 
+.btn-1 {
+  background-color: #C4DFF6;
+}
+.btn-1:hover,
+.btn-1:focus {
+  background-color: #56A0D3;  
+}
+
+.btn-2{
+  background-color: #8ec06c;
+}
+.btn-2:hover,
+.btn-2:focus {
+  background-color: #537b35;  
+}
+
+.modal-dialog {
+  width: 70%;
+  height:90%;    
+}
+
 #arclogo {
   position: absolute;
   right:0;
@@ -43,10 +64,6 @@ body{
   min-height:310px;  /*set to largest thumbnail, so all boxes match*/
 }
 
-.btn:hover,
-.btn:focus {
-  background-color: #9f9fa3;  
-}
 
 @media (max-width: 980px) {
   /* Enable use of floated navbar text */
