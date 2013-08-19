@@ -19,12 +19,7 @@
     <link rel="shortcut icon" href="img/favicon.png">
       
   </head>
-
-  <style>
-
-
-
-  </style>
+  
 
   <body>
 
@@ -39,14 +34,10 @@ function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT}, 'google_translate_element');
 }
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    </div>
-
-    
-         
+    </div>    
           
         <a href="http://redcross.org"><img src="img/redcross-logo.png" id="arclogo" /></a>
-        <div id="map"></div>           
-          
+        <div id="map"></div>    
           
 
 <div id="myModal" class="modal fade">
@@ -70,13 +61,14 @@ function googleTranslateElementInit() {
       <div class="container">
       <h4>Filters</h4> 
       <p><h6><b>Extent:</b>
-      <span style="margin-left:10px;">
-      <button class="btn btn-small btn-1" type="button" onclick="toggleRegion('.LAC', this);">LAC <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button class="btn btn-small btn-1" type="button" onclick="toggleRegion('.AMEE', this);">AMEE <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button class="btn btn-small btn-1" type="button" onclick="toggleRegion('.AFRICA', this);">Africa <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button class="btn btn-small btn-1" type="button" onclick="toggleRegion('.USA', this);">Domestic <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button> 
-      <button class="btn btn-small btn-1" type="button" onclick="toggleRegion('.GLOBAL', this);">Global <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      </span></h6></p>   
+      <span  id="extentButtons" style="margin-left:10px;">      
+      <button class="btn btn-small btn-1 ALL" type="button" onclick="toggleRegion('ALL');" style="margin-right:10px;">All <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button> 
+      <button class="btn btn-small btn-1 LAC" type="button" onclick="toggleRegion('LAC');">LAC <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-1 AMEE" type="button" onclick="toggleRegion('AMEE');">AMEE <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-1 AFRICA" type="button" onclick="toggleRegion('AFRICA');">Africa <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-1 USA" type="button" onclick="toggleRegion('USA');">Domestic <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button> 
+      <button class="btn btn-small btn-1 GLOBAL" type="button" onclick="toggleRegion('GLOBAL');">Global <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
+      </span></h6></p>        
       <p><h6><b>Sector:</b>
       <span style="margin-left:10px;">
       <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.sector1', this);">Lorem Ipsum <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
@@ -87,7 +79,7 @@ function googleTranslateElementInit() {
       </span></h6></p>
     </div>
       <div class="container">
-      <div class="row">
+      <div class="row thumbnailGallery">
         <div class="col-sm-3 sector1 AFRICA">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/floodRisk_thumb.png" alt="">
@@ -305,9 +297,14 @@ function googleTranslateElementInit() {
       
     </div><!--/container-->
     
-    <hr>
+    <hr style="margin-bottom:10px;">
     <footer>
-      <p>&copy; <a href="http://redcross.org">American Red Cross</a> 2013</p>
+      <div class="disclaimer pull-right">
+        <p>
+            &copy; <a href="http://redcross.org" title="Red Cross" target="_blank">Red Cross</a> 2013 | 
+            <a title="Disclaimer" onClick="showDisclaimer();">Disclaimer</a>
+        </p>        
+    </div>
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>

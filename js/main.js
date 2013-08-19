@@ -96,18 +96,31 @@ function toggleSector (sectorClass, element) {
 	}    
 }
 
-function toggleRegion (regionClass, element) {
-	var status = $(element).children();
-	if ($(status).hasClass("glyphicon-ok")){
-		$(status).removeClass("glyphicon-ok");
-		$(status).addClass("glyphicon-remove");
-		$(regionClass).hide();
-	} else {
-		$(status).removeClass("glyphicon-remove");
-		$(status).addClass("glyphicon-ok");
-		$(regionClass).show();
-	}    
-}
+function toggleRegion (regionClass) {
+	var thumbnails = $(".thumbnailGallery").children();
+    if (regionClass === "ALL"){
+        $(thumbnails).show();
+    } else {
+        $(thumbnails).hide();
+        $.each(thumbnails, function(i, thumbnail){
+            if($(thumbnail).hasClass(regionClass)){
+                $(thumbnail).show();
+            }
+        })
+    }
+    var buttons = $("#extentButtons").children();
+    $.each(buttons, function(i, button){
+        var buttonElements = $(button).children();
+        if($(button).hasClass(regionClass)){            
+            $(buttonElements).removeClass("glyphicon-remove");
+            $(buttonElements).addClass("glyphicon-ok");
+        } else {
+            $(buttonElements).removeClass("glyphicon-ok");
+            $(buttonElements).addClass("glyphicon-remove");
+        }
+    });
+} 
+
 
 function callModal (item) {
 	var title = $(item).children('.caption').html();
@@ -126,5 +139,9 @@ function callModal (item) {
 	$('#myModal').modal();
 }
 
+//disclaimer text
+function showDisclaimer() {
+    window.alert("The maps on this page do not imply the expression of any opinion on the part of the American Red Cross concerning the legal status of a territory or of its authorities.");
+}
 
 getWorld();
