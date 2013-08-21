@@ -64,6 +64,13 @@ body{
   min-height:310px;  /*set to largest thumbnail, so all boxes match*/
 }
 
+.detailedDescription {
+  display: none;  
+}
+.modal-detailedDescription {
+  padding-bottom: 8px;
+  text-align: left;
+}
 
 @media (max-width: 980px) {
   /* Enable use of floated navbar text */

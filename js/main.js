@@ -132,6 +132,11 @@ function callModal (item) {
 	var mapImg = '<img src="' + mapSrc + '" alt="" class="img-responsive">'
 	$(".modal-body").empty();
 	$(".modal-body").append(mapImg);
+
+    var description = $(item).children('.detailedDescription').html();
+    $(".modal-detailedDescription").empty();
+    $(".modal-detailedDescription").append(description);
+    
 	
 	var pdfSrc = "pdf" + mapSrc.substring(3).replace(".png", ".pdf");
 	$("#downloadPDF").attr("href", pdfSrc);  
