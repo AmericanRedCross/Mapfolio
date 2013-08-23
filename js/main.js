@@ -1,90 +1,5 @@
-// var geojson;
-// var center = new L.LatLng(30, 30);
-// var bounds = new L.LatLngBounds([90, 200], [-80, -200]);
-// var worldcountries = [];
-// var centroids = [];
 
-
-// var greyStyle = {
-//     color: '#fff',
-//     weight: 1,
-//     fillColor: '#d7d7d8',
-//     fillOpacity: 1,
-// };
-
-// var map = L.map('map', {
-//     center: center,
-//     zoom: 0,
-//     attributionControl: false,
-//     maxBounds: bounds,
-//     scrollWheelZoom: false,
-    
-// });
-
-// var centroidOptions = {
-//     radius: 8,
-//     fillColor: "#ED1B2E",
-//     color: "#FFF",
-//     weight: 2.5,
-//     opacity: 1,
-//     fillOpacity: 1
-// };
-
-// function getWorld() {
-//     $.ajax({
-//         type: 'GET',
-//         url: 'data/worldcountries.json',
-//         contentType: 'application/json',
-//         dataType: 'json',
-//         timeout: 10000,
-//         success: function(json) {
-//             worldcountries = json;
-//             countries = new L.layerGroup().addTo(map);
-//             geojson = L.geoJson(worldcountries,{
-//                 style: greyStyle
-//             }).addTo(countries);
-//             getCentroids();
-//         },
-//         error: function(e) {
-//             console.log(e);
-//         }
-//     });
-// }
-
-// function getCentroids(){
-//     $.ajax({
-//         type: 'GET',
-//         url: 'data/centroids.json',
-//         contentType: 'application/json',
-//         dataType: 'json',
-//         timeout: 10000,
-//         success: function(json) {
-//             centroids = json;
-//             markers2map();
-//         },
-//         error: function(e) {
-//             console.log(e);
-//         }
-//     });
-// }
-
-// function markers2map () {
-
-//     L.geoJson(centroids,{
-//         pointToLayer: function (feature, latlng){
-//             return L.circleMarker(latlng,centroidOptions);
-//         }    
-//     }).addTo(map);
-
-
-
-// }
-
-// getWorld();
-
-
-
-// THIS IS ALL FOR THE IMAGE GALLERY, MAP STUFF START FARTHER DOWN
+// THIS IS FOR THE IMAGE GALLERY, MAP STUFF START FARTHER DOWN
 
 function toggleSector (sectorClass, element) {
 	var status = $(element).children();
@@ -99,14 +14,14 @@ function toggleSector (sectorClass, element) {
 	}    
 }
 
-function toggleRegion (regionClass) {
+function toggleExtent (extentFilter) {
 	var thumbnails = $(".thumbnailGallery").children();
-    if (regionClass === "ALL"){
+    if (extentFilter === "ALL"){
         $(thumbnails).show();
     } else {
         $(thumbnails).hide();
         $.each(thumbnails, function(i, thumbnail){
-            if($(thumbnail).hasClass(regionClass)){
+            if($(thumbnail).hasClass(extentFilter)){
                 $(thumbnail).show();
             }
         })
@@ -114,7 +29,7 @@ function toggleRegion (regionClass) {
     var buttons = $("#extentButtons").children();
     $.each(buttons, function(i, button){
         var buttonElements = $(button).children();
-        if($(button).hasClass(regionClass)){            
+        if($(button).hasClass(extentFilter)){            
             $(buttonElements).removeClass("glyphicon-remove");
             $(buttonElements).addClass("glyphicon-ok");
         } else {
@@ -122,6 +37,7 @@ function toggleRegion (regionClass) {
             $(buttonElements).addClass("glyphicon-remove");
         }
     });
+    markersToMap(extentFilter);
 } 
 
 function callModal (item) {
@@ -156,15 +72,55 @@ function showDisclaimer() {
 // MAP SHIT STARTS HERE
 
 var centroids = [];
+var markersBounds = [];
+var displayedPoints = [];
+var markers = new L.MarkerClusterGroup();
+
+
+var countryStyle = {
+    color: '#fff',
+    weight: 1,
+    fillColor: '#d7d7d8',
+    fillOpacity: 1,
+};
 
 var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/22677/256/{z}/{x}/{y}.png';
-var cloudmadeAttribution = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade';
-var cloudmade = L.tileLayer(cloudmadeUrl, {attribution: cloudmadeAttribution});
+var attribution = '';
+var cloudmade = L.tileLayer(cloudmadeUrl, {attribution: attribution});
 
 var latlng = new L.LatLng(30, 30);
 var bounds = new L.LatLngBounds([90, 200], [-80, -200]);
 
-var map = L.map('map', {center: latlng, maxBounds: bounds, zoom: 0, layers: [cloudmade]});
+var map = L.map('map', {
+    center: latlng,      
+    zoom: 0,
+//  attributionControl: false,
+    scrollWheelZoom: false,
+    layers: [cloudmade]
+});
+cloudmade.setOpacity(0); 
+
+
+function getWorld() {
+    $.ajax({
+        type: 'GET',
+        url: 'data/worldcountries.json',
+        contentType: 'application/json',
+        dataType: 'json',
+        timeout: 10000,
+        success: function(json) {
+            worldcountries = json;
+            countries = new L.layerGroup().addTo(map);
+            geojson = L.geoJson(worldcountries,{
+                style: countryStyle
+            }).addTo(countries);
+            getCentroids();
+        },
+        error: function(e) {
+            console.log(e);
+        }
+    });
+}
 
 function getCentroids() {
     $.ajax({
@@ -173,9 +129,8 @@ function getCentroids() {
         contentType: 'application/json',
         dataType: 'json',
         timeout: 10000,
-        success: function(json) {
-            centroids = json;
-            markersToMap();
+        success: function(data) {
+            formatCentroids(data);
         },
         error: function(e) {
             console.log(e);
@@ -183,19 +138,66 @@ function getCentroids() {
     });
 }
 
-function markersToMap() {
-    var markers = L.markerClusterGroup();
-
-    $.each(centroids, function (i, map) {
-        var y = map.latitude;
-        var x = map.longitude;
-        var title = map.name;
-        var marker = L.marker(new L.LatLng(y,x), {title: title});
-        marker.bindPopup(title);
-        markers.addLayer(marker);
-    });
-
-    map.addLayer(markers);
+function formatCentroids(data){
+    $.each(data, function(index, item) {
+        latlng = [item.longitude, item.latitude];
+        var mapCoord = {
+            "type": "Feature",
+            "properties": {
+                "name": item.name,
+                "extent": item.extent,
+                "sector": item.sector,                        
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": latlng
+            }
+        }
+        centroids.push(mapCoord);
+    }); 
+    markersToMap('ALL');
 }
 
-getCentroids();
+var Options = {
+    radius: 8,
+    fillColor: "#ED1B2E",
+    color: "#FFF",
+    weight: 2.5,
+    opacity: 1,
+    fillOpacity: 1
+};
+
+function markersToMap(extentFilter){
+    map.removeLayer(markers);
+    markers = new L.MarkerClusterGroup();
+    displayedPoints=[];
+    $.each(centroids, function (i, centroid){
+        var currentExtent = centroid.properties.extent;
+        if (extentFilter === currentExtent || extentFilter === "ALL") {
+            displayedPoints.push(centroid);
+        }
+    })    
+
+    marker = L.geoJson(displayedPoints, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, Options);
+            },
+            // onEachFeature: markerEvents
+        });
+
+    markers.addLayer(marker);
+    markers.addTo(map);
+
+    markersBounds = markers.getBounds();
+    map.fitBounds(markersBounds);
+} 
+
+$(window).resize(function(){
+    map.fitBounds(markersBounds);
+})
+
+function zoomOut() {
+    map.fitBounds(markersBounds);
+}
+
+getWorld();

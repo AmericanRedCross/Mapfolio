@@ -18,6 +18,30 @@ body{
   border-bottom-style: solid;
 }
 
+.btn-zoom {
+  position: absolute;
+  left: 0;
+  margin-left: 47px;
+  margin-top: 10px;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-color: #d7d7d8;
+  font-weight: bold;
+  color: #6d6e70;
+  box-shadow: 1px 1px 9px #c3c3c5;
+}
+.btn-zoom:hover,
+.btn-zoom:focus {
+  color: black;
+  background-color: #f4f4f4; 
+}
+
+a.leaflet-control-zoom-in, 
+a.leaflet-control-zoom-out {
+  color:#6d6e70;
+}
+
+
 .btn-1 {
   background-color: #C4DFF6;
 }
@@ -90,4 +114,34 @@ body{
   text-decoration: none;
   cursor: pointer;
   color: #6d6e70;
+}
+
+
+
+/*styling for marker clusters*/
+.marker-cluster-small {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.marker-cluster-small div {
+  background-color: rgba(237, 27, 46, 0.7);
+}
+
+.marker-cluster-medium {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.marker-cluster-medium div {
+  background-color: rgba(237, 27, 46, 0.7);
+}
+
+.marker-cluster-large {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.marker-cluster-large div {
+  background-color: rgba(237, 27, 46, 0.7);
+}
+.marker-cluster div {
+  color: #FFF;
+  text-align: center;
+  border-radius: 15px;
+  font: bold 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
 }

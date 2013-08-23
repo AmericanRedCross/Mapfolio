@@ -37,6 +37,7 @@ function googleTranslateElementInit() {
     </div>    
           
         <a href="http://redcross.org"><img src="img/redcross-logo.png" id="arclogo" /></a>
+        <button class="btn btn-small btn-zoom" type="button" onClick="zoomOut();">Zoom to Extent</button>
         <div id="map"></div>    
           
 
@@ -63,12 +64,12 @@ function googleTranslateElementInit() {
       <h4>Filters</h4> 
       <p><h6><b>Extent:</b>
       <span  id="extentButtons" style="margin-left:10px;">      
-      <button class="btn btn-small btn-1 ALL" type="button" onclick="toggleRegion('ALL');" style="margin-right:10px;">All <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button> 
-      <button class="btn btn-small btn-1 LAC" type="button" onclick="toggleRegion('LAC');">LAC <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
-      <button class="btn btn-small btn-1 AMEE" type="button" onclick="toggleRegion('AMEE');">AMEE <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
-      <button class="btn btn-small btn-1 AFRICA" type="button" onclick="toggleRegion('AFRICA');">Africa <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
-      <button class="btn btn-small btn-1 USA" type="button" onclick="toggleRegion('USA');">Domestic <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button> 
-      <button class="btn btn-small btn-1 GLOBAL" type="button" onclick="toggleRegion('GLOBAL');">Global <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-1 ALL" type="button" onclick="toggleExtent('ALL');" style="margin-right:10px;">All <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button> 
+      <button class="btn btn-small btn-1 LAC" type="button" onclick="toggleExtent('LAC');">LAC <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-1 AMEE" type="button" onclick="toggleExtent('AMEE');">AMEE <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-1 AFRICA" type="button" onclick="toggleExtent('AFRICA');">Africa <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-1 USA" type="button" onclick="toggleExtent('USA');">Domestic <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button> 
+      <button class="btn btn-small btn-1 GLOBAL" type="button" onclick="toggleExtent('GLOBAL');">Global <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
       </span></h6></p>        
       <p><h6><b>Sector:</b>
       <span style="margin-left:10px;">
