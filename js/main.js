@@ -82,6 +82,7 @@ var countryStyle = {
     weight: 1,
     fillColor: '#d7d7d8',
     fillOpacity: 1,
+    clickable: false
 };
 
 var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/22677/256/{z}/{x}/{y}.png';
@@ -94,11 +95,56 @@ var bounds = new L.LatLngBounds([90, 200], [-80, -200]);
 var map = L.map('map', {
     center: latlng,      
     zoom: 0,
-//  attributionControl: false,
     scrollWheelZoom: false,
     layers: [cloudmade]
 });
 cloudmade.setOpacity(0); 
+
+// change display accordingly to the zoom level
+function mapDisplay() {
+    var remove = {fillOpacity:0, opacity:0}
+    var add = {fillOpacity:1, opacity:1}
+    map.on('viewreset', function() {
+        if (map.getZoom() < 6) {
+            cloudmade.setOpacity(0);
+            geojson.setStyle(add);
+        } else {
+            geojson.setStyle(remove);
+            cloudmade.setOpacity(1);
+        }
+    })
+}
+
+var markerEvents = function (feature, layer) {
+    layer.on({
+        click: centroidClick,
+        // mouseover: displayName,
+        // mouseout: clearName,
+    })
+}
+
+function centroidClick (e) {
+    var thumbnail_id_class = "." + e.target.feature.properties.thumbnail_id;
+    var sector = e.target.feature.properties.sector;
+    if (sector === "ONLINE") {
+        url = $(thumbnail_id_class).attr('href');
+        window.open(url, '_blank');
+    } else {
+        callModal(thumbnail_id_class);
+    }    
+}
+
+function displayName(e) {   
+    target = e.target;
+    var thumbnail_id_class = "." + e.target.feature.properties.thumbnail_id;
+    var thumbnail_title 
+    target.bindPopup(thumbnail_title).openPopup();   
+}
+
+function clearName(e) {    
+    var target = e.target;
+    target.closePopup();    
+}
 
 
 function getWorld() {
@@ -131,6 +177,7 @@ function getCentroids() {
         timeout: 10000,
         success: function(data) {
             formatCentroids(data);
+            mapDisplay();
         },
         error: function(e) {
             console.log(e);
@@ -145,6 +192,7 @@ function formatCentroids(data){
             "type": "Feature",
             "properties": {
                 "name": item.name,
+                "thumbnail_id": item.thumbnail_id,
                 "extent": item.extent,
                 "sector": item.sector,                        
             },
@@ -182,7 +230,7 @@ function markersToMap(extentFilter){
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, Options);
             },
-            // onEachFeature: markerEvents
+            onEachFeature: markerEvents
         });
 
     markers.addLayer(marker);
