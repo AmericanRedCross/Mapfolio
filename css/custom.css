@@ -57,36 +57,36 @@ a.leaflet-control-zoom-out {
 .social-list span {
   float: left;
   box-shadow: 1px 1px 9px #c3c3c5;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 
 .social-list li.twitter span {
   background: url("../img/twitter_gray.png");
   background-repeat: no-repeat;
-  height: 20px;
-  width: 20px;
+  height: 26px;
+  width: 26px;
   margin-top: 7px;
   margin-bottom: 5px;
 }
 .social-list li.twitter a:hover span {
   background: url("../img/twitter_color.png");
   background-repeat: no-repeat;
-  height: 20px;
-  width: 20px;
+  height: 26px;
+  width: 26px;
 }
 
 .social-list li.facebook span {
   background: url("../img/fb_gray.png");
   background-repeat: no-repeat;
-  height: 20px;
-  width: 20px;
+  height: 26px;
+  width: 26px;
 }
 .social-list li.facebook a:hover span {
   background: url("../img/fb_color.png");
   background-repeat: no-repeat;
-  height: 20px;
-  width: 20px;
+  height: 26px;
+  width: 26px;
 }
 
 
