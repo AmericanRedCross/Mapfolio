@@ -1,6 +1,8 @@
 
 // THIS IS FOR THE IMAGE GALLERY, MAP STUFF START FARTHER DOWN
 
+var windowHeight = $(window).height();
+
 function toggleSector (sectorClass, element) {
 	var status = $(element).children();
 	if ($(status).hasClass("glyphicon-ok")){
@@ -47,7 +49,8 @@ function callModal (item) {
 	
 	var thumbSrc = $(item).children('img').attr("src");
 	var mapSrc = thumbSrc.replace("_thumb", "");
-	var mapImg = '<img src="' + mapSrc + '" alt="" class="img-responsive">'
+    var img_maxHeight = windowHeight*0.60
+	var mapImg = '<img src="' + mapSrc + '" alt="" ' + 'style="max-height:' + img_maxHeight + 'px">'
 	$(".modal-body").empty();
 	$(".modal-body").append(mapImg);
 
@@ -85,8 +88,8 @@ var countryStyle = {
     clickable: false
 };
 
-var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/22677/256/{z}/{x}/{y}.png';
-var attribution = '';
+var cloudmadeUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
 var cloudmade = L.tileLayer(cloudmadeUrl, {attribution: attribution});
 
 var latlng = new L.LatLng(30, 30);
@@ -115,14 +118,6 @@ function mapDisplay() {
     })
 }
 
-var markerEvents = function (feature, layer) {
-    layer.on({
-        click: centroidClick,
-        // mouseover: displayName,
-        // mouseout: clearName,
-    })
-}
-
 function centroidClick (e) {
     var thumbnail_id_class = "." + e.target.feature.properties.thumbnail_id;
     var sector = e.target.feature.properties.sector;
@@ -135,10 +130,8 @@ function centroidClick (e) {
 }
 
 function displayName(e) {   
-    target = e.target;
-    var thumbnail_id_class = "." + e.target.feature.properties.thumbnail_id;
-    var thumbnail_title 
-    target.bindPopup(thumbnail_title).openPopup();   
+    var target = e.target;
+    target.openPopup();   
 }
 
 function clearName(e) {    
@@ -230,7 +223,23 @@ function markersToMap(extentFilter){
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, Options);
             },
-            onEachFeature: markerEvents
+            onEachFeature: function(feature, layer) {
+                var thumbnail_id_class = "." + feature.properties.thumbnail_id;
+                var popupContent = $(thumbnail_id_class).children('.caption').html();
+                var popupOptions = 
+                {
+                    'minWidth': 30,
+                    'offset': [0,-10],
+                    'closeButton': false,
+                }; 
+                layer.bindPopup(popupContent, popupOptions);
+                layer.on({
+                    click: centroidClick,
+                    mouseover: displayName,
+                    mouseout: clearName,
+                })   
+            }
+            
         });
 
     markers.addLayer(marker);
@@ -240,8 +249,10 @@ function markersToMap(extentFilter){
     map.fitBounds(markersBounds);
 } 
 
+
 $(window).resize(function(){
     map.fitBounds(markersBounds);
+    windowHeight = $(window).height();
 })
 
 function zoomOut() {
