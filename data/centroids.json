@@ -4,39 +4,39 @@
     "thumbnail_id":"T001",
     "extent":"AFRICA",
     "sector":"x",
-    "latitude":0.967600,
-    "longitude":34.291400
+    "latitude":0.9676,
+    "longitude":34.2914
   },
   {
     "name":"2011_09_29_Blocks_Nhoods_Agencies_All_CF",
     "thumbnail_id":"T002",
     "extent":"LAC",
     "sector":"x",
-    "latitude":18.513500,
-    "longitude":-72.346700
+    "latitude":18.5135,
+    "longitude":-72.3467
   },
   {
     "name":"2012_03_09_Campeche_Satellite_SDE",
     "thumbnail_id":"T003",
     "extent":"LAC",
     "sector":"x",
-    "latitude":18.525700,
-    "longitude":-72.337000
+    "latitude":18.5257,
+    "longitude":-72.337
   },
   {
     "name":"2011_12_29_2YRDRR_Final",
     "thumbnail_id":"T004",
     "extent":"LAC",
     "sector":"x",
-    "latitude":18.539000,
-    "longitude":-72.334800
+    "latitude":18.539,
+    "longitude":-72.3348
   },
   {
     "name":"2012_05_23_Central_America_LARRA_Communities_5-12",
     "thumbnail_id":"T005",
     "extent":"LAC",
     "sector":"x",
-    "latitude":12.150000,
+    "latitude":12.15,
     "longitude":-86.266667
   },
   {
@@ -44,40 +44,40 @@
     "thumbnail_id":"T006",
     "extent":"AMEE",
     "sector":"x",
-    "latitude":19.750000,
-    "longitude":96.100000
+    "latitude":19.75,
+    "longitude":96.1
   },
   {
     "name":"2012_08_05_PaP_Bilateral_and_Partners_Overview_7.27.11",
     "thumbnail_id":"T007",
     "extent":"LAC",
     "sector":"x",
-    "latitude":18.549400,
-    "longitude":-72.303000
+    "latitude":18.5494,
+    "longitude":-72.303
   },
   {
     "name":"2012_08_17_Cases_v_Volunteers",
     "thumbnail_id":"T008",
     "extent":"AFRICA",
     "sector":"x",
-    "latitude":8.484450,
-    "longitude":-13.234450
+    "latitude":8.48445,
+    "longitude":-13.23445
   },
   {
     "name":"2013_01_30_DisasterResponse_Q2",
     "thumbnail_id":"T009",
     "extent":"GLOBAL",
     "sector":"x",
-    "latitude":25.000000,
-    "longitude":-40.000000
+    "latitude":25,
+    "longitude":-40
   },
   {
     "name":"2013_01_31_Latin_America_Programs_FY13_InternalV2",
     "thumbnail_id":"T010",
     "extent":"LAC",
     "sector":"x",
-    "latitude":2.170800,
-    "longitude":-72.104200
+    "latitude":2.1708,
+    "longitude":-72.1042
   },
   {
     "name":"2013_03_29_RFL_MAP",
@@ -85,31 +85,31 @@
     "extent":"USA",
     "sector":"x",
     "latitude":38.895111,
-    "longitude":-77.036667    
+    "longitude":-77.036667
   },
   {
     "name":"2013_04_03_ARCT_FY14_Eurasia_Programs",
     "thumbnail_id":"T012",
     "extent":"AMEE",
     "sector":"x",
-    "latitude":35.775400,
-    "longitude":84.931800
+    "latitude":35.7754,
+    "longitude":84.9318
   },
   {
     "name":"2013_3_28_ResponseAppeals",
     "thumbnail_id":"T013",
     "extent":"GLOBAL",
     "sector":"x",
-    "latitude":25.000000,
-    "longitude":-48.000000
+    "latitude":25,
+    "longitude":-40
   },
   {
     "name":"AMEE_PO_Coverage_June2013",
     "thumbnail_id":"T014",
     "extent":"AMEE",
     "sector":"x",
-    "latitude":34.492400,
-    "longitude":82.635700
+    "latitude":35.7754,
+    "longitude":84.9318
   },
   {
     "name":"ARC_P019_metropolitan_camps_geology_analysis",
@@ -132,8 +132,8 @@
     "thumbnail_id":"T017",
     "extent":"LAC",
     "sector":"x",
-    "latitude":18.525000,
-    "longitude":-72.335000
+    "latitude":18.525,
+    "longitude":-72.335
   },
   {
     "name":"ARC_P074_DELINEATION_low",
@@ -156,16 +156,16 @@
     "thumbnail_id":"T020",
     "extent":"LAC",
     "sector":"x",
-    "latitude":16.263200,
-    "longitude":-76.008100
+    "latitude":16.2632,
+    "longitude":-76.0081
   },
   {
     "name":"GDPC_EngagementMap_FY2013",
     "thumbnail_id":"T021",
     "extent":"GLOBAL",
     "sector":"x",
-    "latitude":30.000000,
-    "longitude":-44.000000
+    "latitude":25,
+    "longitude":-40
   },
   {
     "name":"GuluFireRisk",
@@ -181,30 +181,30 @@
     "extent":"LAC",
     "sector":"x",
     "latitude":-34.920755,
-    "longitude":-57.953530
+    "longitude":-57.95353
   },
   {
     "name":"IROC",
     "thumbnail_id":"T024",
     "extent":"GLOBAL",
     "sector":"ONLINE",
-    "latitude":30.000000,
-    "longitude":-52.000000
+    "latitude":25,
+    "longitude":-40
   },
   {
     "name":"ProgramMaps",
     "thumbnail_id":"T025",
     "extent":"GLOBAL",
     "sector":"ONLINE",
-    "latitude":25.000000,
-    "longitude":-56.000000
+    "latitude":25,
+    "longitude":-40
   },
   {
     "name":"Caribbean",
     "thumbnail_id":"T026",
     "extent":"LAC",
     "sector":"ONLINE",
-    "latitude":14.100000,
-    "longitude":-78.000000
+    "latitude":14.1,
+    "longitude":-78
   }
 ]

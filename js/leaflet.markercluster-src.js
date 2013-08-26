@@ -110,6 +110,15 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	removeLayer: function (layer) {
 
+		if (layer instanceof L.LayerGroup)
+		{
+			var array = [];
+			for (var i in layer._layers) {
+				array.push(layer._layers[i]);
+			}
+			return this.removeLayers(array);
+		}
+
 		//Non point layers
 		if (!layer.getLatLng) {
 			this._nonPointGroup.removeLayer(layer);
@@ -375,6 +384,10 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 		this._map = map;
 		var i, l, layer;
 
+		if (!isFinite(this._map.getMaxZoom())) {
+			throw "Map has no maxZoom specified";
+		}
+
 		this._featureGroup.onAdd(map);
 		this._nonPointGroup.onAdd(map);
 
@@ -384,7 +397,7 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 		for (i = 0, l = this._needsRemoving.length; i < l; i++) {
 			layer = this._needsRemoving[i];
-			this._removeLayer(layer);
+			this._removeLayer(layer, true);
 		}
 		this._needsRemoving = [];
 
@@ -443,6 +456,8 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 		//Clean up all the layers we added to the map
 		this._featureGroup.onRemove(map);
 		this._nonPointGroup.onRemove(map);
+
+		this._featureGroup.clearLayers();
 
 		this._map = null;
 	},
@@ -838,6 +853,10 @@ L.MarkerClusterGroup.include(!L.DomUtil.TRANSITION ? {
 			var startPos = c._latlng,
 				markers = c._markers,
 				m;
+
+			if (!bounds.contains(startPos)) {
+				startPos = null;
+			}
 
 			if (c._isSingleParent() && previousZoomLevel + 1 === newZoomLevel) { //Immediately add the new child and remove us
 				fg.removeLayer(c);
@@ -1667,7 +1686,9 @@ L.MarkerCluster.include({
 				m.setLatLng(m._preSpiderfyLatlng);
 				delete m._preSpiderfyLatlng;
 			}
-			m.setZIndexOffset(0);
+			if (m.setZIndexOffset) {
+				m.setZIndexOffset(0);
+			}
 
 			if (m._spiderLeg) {
 				map.removeLayer(m._spiderLeg);
@@ -1691,7 +1712,9 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 
 			m._preSpiderfyLatlng = m._latlng;
 			m.setLatLng(newPos);
-			m.setZIndexOffset(1000000); //Make these appear on top of EVERYTHING
+			if (m.setZIndexOffset) {
+				m.setZIndexOffset(1000000); //Make these appear on top of EVERYTHING
+			}
 
 			fg.addLayer(m);
 
@@ -1725,12 +1748,18 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 		for (i = childMarkers.length - 1; i >= 0; i--) {
 			m = childMarkers[i];
 
-			m.setZIndexOffset(1000000); //Make these appear on top of EVERYTHING
-			m.setOpacity(0);
+			//If it is a marker, add it now and we'll animate it out
+			if (m.setOpacity) {
+				m.setZIndexOffset(1000000); //Make these appear on top of EVERYTHING
+				m.setOpacity(0);
+			
+				fg.addLayer(m);
 
-			fg.addLayer(m);
-
-			m._setPos(thisLayerPos);
+				m._setPos(thisLayerPos);
+			} else {
+				//Vectors just get immediately added
+				fg.addLayer(m);
+			}
 		}
 
 		group._forceLayout();
@@ -1747,7 +1776,10 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 			//Move marker to new position
 			m._preSpiderfyLatlng = m._latlng;
 			m.setLatLng(newPos);
-			m.setOpacity(1);
+			
+			if (m.setOpacity) {
+				m.setOpacity(1);
+			}
 
 
 			//Add Legs.
@@ -1835,9 +1867,12 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 			m.setLatLng(m._preSpiderfyLatlng);
 			delete m._preSpiderfyLatlng;
 			//Hack override the location to be our center
-			m._setPos(thisLayerPos);
-
-			m.setOpacity(0);
+			if (m.setOpacity) {
+				m._setPos(thisLayerPos);
+				m.setOpacity(0);
+			} else {
+				fg.removeLayer(m);
+			}
 
 			//Animate the spider legs back in
 			if (svg) {
@@ -1875,8 +1910,10 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 				}
 
 
-				m.setOpacity(1);
-				m.setZIndexOffset(0);
+				if (m.setOpacity) {
+					m.setOpacity(1);
+					m.setZIndexOffset(0);
+				}
 
 				if (stillThereChildCount > 1) {
 					fg.removeLayer(m);

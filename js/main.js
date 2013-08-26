@@ -1,6 +1,4 @@
-
 // THIS IS FOR THE IMAGE GALLERY, MAP STUFF START FARTHER DOWN
-
 var windowHeight = $(window).height();
 
 function toggleSector (sectorClass, element) {
@@ -49,8 +47,8 @@ function callModal (item) {
 	
 	var thumbSrc = $(item).children('img').attr("src");
 	var mapSrc = thumbSrc.replace("_thumb", "");
-    var img_maxHeight = windowHeight*0.60
-	var mapImg = '<img src="' + mapSrc + '" alt="" ' + 'style="max-height:' + img_maxHeight + 'px">'
+    var img_maxHeight = windowHeight*0.60;
+	var mapImg = '<img src="' + mapSrc + '" alt="" ' + 'style="max-height:' + img_maxHeight + 'px">';
 	$(".modal-body").empty();
 	$(".modal-body").append(mapImg);
 
@@ -79,7 +77,6 @@ var markersBounds = [];
 var displayedPoints = [];
 var markers = new L.MarkerClusterGroup();
 
-
 var countryStyle = {
     color: '#fff',
     weight: 1,
@@ -88,15 +85,20 @@ var countryStyle = {
     clickable: false
 };
 
+var centroidOptions = {
+    radius: 8,
+    fillColor: "#ED1B2E",
+    color: "#FFF",
+    weight: 2.5,
+    opacity: 1,
+    fillOpacity: 1
+};
+
 var cloudmadeUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-var attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
+var attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a> | &copy; <a href="http://redcross.org" title="Red Cross" target="_blank">Red Cross</a> 2013';
 var cloudmade = L.tileLayer(cloudmadeUrl, {attribution: attribution});
 
-var latlng = new L.LatLng(30, 30);
-var bounds = new L.LatLngBounds([90, 200], [-80, -200]);
-
-var map = L.map('map', {
-    center: latlng,      
+var map = L.map('map', {   
     zoom: 0,
     scrollWheelZoom: false,
     layers: [cloudmade]
@@ -118,6 +120,7 @@ function mapDisplay() {
     })
 }
 
+// on marker click open modal
 function centroidClick (e) {
     var thumbnail_id_class = "." + e.target.feature.properties.thumbnail_id;
     var sector = e.target.feature.properties.sector;
@@ -129,17 +132,18 @@ function centroidClick (e) {
     }    
 }
 
+// on marker mouseover
 function displayName(e) {   
     var target = e.target;
     target.openPopup();   
 }
-
+// on marker mouseout
 function clearName(e) {    
     var target = e.target;
     target.closePopup();    
 }
 
-
+// beginning of function chain to initialize map
 function getWorld() {
     $.ajax({
         type: 'GET',
@@ -199,18 +203,9 @@ function formatCentroids(data){
     markersToMap('ALL');
 }
 
-var Options = {
-    radius: 8,
-    fillColor: "#ED1B2E",
-    color: "#FFF",
-    weight: 2.5,
-    opacity: 1,
-    fillOpacity: 1
-};
-
 function markersToMap(extentFilter){
     map.removeLayer(markers);
-    markers = new L.MarkerClusterGroup();
+    markers = new L.MarkerClusterGroup({showCoverageOnHover:false, spiderfyDistanceMultiplier:3,});
     displayedPoints=[];
     $.each(centroids, function (i, centroid){
         var currentExtent = centroid.properties.extent;
@@ -220,31 +215,27 @@ function markersToMap(extentFilter){
     })    
 
     marker = L.geoJson(displayedPoints, {
-            pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, Options);
-            },
-            onEachFeature: function(feature, layer) {
-                var thumbnail_id_class = "." + feature.properties.thumbnail_id;
-                var popupContent = $(thumbnail_id_class).children('.caption').html();
-                var popupOptions = 
-                {
-                    'minWidth': 30,
-                    'offset': [0,-10],
-                    'closeButton': false,
-                }; 
-                layer.bindPopup(popupContent, popupOptions);
-                layer.on({
-                    click: centroidClick,
-                    mouseover: displayName,
-                    mouseout: clearName,
-                })   
-            }
-            
-        });
-
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, centroidOptions);
+        },
+        onEachFeature: function(feature, layer) {
+            var thumbnail_id_class = "." + feature.properties.thumbnail_id;
+            var popupContent = $(thumbnail_id_class).children('.caption').html();
+            var popupOptions = {
+                'minWidth': 30,
+                'offset': [0,-10],
+                'closeButton': false,
+            }; 
+            layer.bindPopup(popupContent, popupOptions);
+            layer.on({
+                click: centroidClick,
+                mouseover: displayName,
+                mouseout: clearName,
+            });   
+        }            
+    });
     markers.addLayer(marker);
     markers.addTo(map);
-
     markersBounds = markers.getBounds();
     map.fitBounds(markersBounds);
 } 
@@ -255,8 +246,28 @@ $(window).resize(function(){
     windowHeight = $(window).height();
 })
 
+// reset map bounds using Zoom to Extent button
 function zoomOut() {
     map.fitBounds(markersBounds);
 }
 
+// tweet popup
+$('.twitterpopup').click(function(event) {
+    var width  = 575,
+        height = 400,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+
+    window.open(url, 'twitter', opts);
+
+    return false;
+});
+
+// start function chain to initialize map
 getWorld();

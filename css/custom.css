@@ -30,6 +30,7 @@ body{
   color: #6d6e70;
   box-shadow: 1px 1px 9px #c3c3c5;
 }
+
 .btn-zoom:hover,
 .btn-zoom:focus {
   color: black;
@@ -40,6 +41,58 @@ a.leaflet-control-zoom-in,
 a.leaflet-control-zoom-out {
   color:#6d6e70;
 }
+
+.socialBar {
+  position: absolute;
+  left: 0;
+  margin-left: 10px;
+  margin-top: 67px;
+  z-index: 1000;  
+}
+.social-list{
+  padding:0;
+  list-style: none;
+}
+
+.social-list span {
+  float: left;
+  box-shadow: 1px 1px 9px #c3c3c5;
+  border-radius: 4px;
+}
+
+
+.social-list li.twitter span {
+  background: url("../img/twitter_gray.png");
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+  margin-top: 7px;
+  margin-bottom: 5px;
+}
+.social-list li.twitter a:hover span {
+  background: url("../img/twitter_color.png");
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+}
+
+.social-list li.facebook span {
+  background: url("../img/fb_gray.png");
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+}
+.social-list li.facebook a:hover span {
+  background: url("../img/fb_color.png");
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+}
+
+
+
+
+
 
 
 .btn-1 {

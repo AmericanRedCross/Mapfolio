@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Mapfolio</title>
+
+    <meta property="og:image" content="http://americanredcross.github.io/Mapfolio/img/redCross.png" />
+    <meta property="og:title" content="American Red Cross" />
+    <meta property="og:description" content = "Interactive portfolio of some of the maps produced by the International Services Department." />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="American Red Cross">
@@ -38,7 +43,22 @@ function googleTranslateElementInit() {
           
         <a href="http://redcross.org"><img src="img/redcross-logo.png" id="arclogo" /></a>
         <button class="btn btn-small btn-zoom" type="button" onClick="zoomOut();">Zoom to Extent</button>
-        <div id="map"></div>    
+        <div class="socialBar">
+          <ul class="social-list">
+            <li class="twitter"><a class="twitter twitterpopup" href="http://twitter.com/intent/tweet?text=awesome%20%40RedCross%20mapfolio&amp;url=http%3A%2F%2Fbit.ly%2F19V54xv&amp;related=RedCross"><span></span></a></li>   
+            <li class="facebook">
+              <a href="#" 
+              onclick="
+              window.open(
+              'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+              'facebook-share-dialog', 
+              'width=626,height=436'); 
+              return false;"><span></span></a></li>                 
+                       
+            </ul>
+          </div>  
+
+          <div id="map"></div>    
           
 
 <div id="myModal" class="modal fade">
@@ -73,16 +93,19 @@ function googleTranslateElementInit() {
       </span></h6></p>        
       <p><h6><b>Sector:</b>
       <span style="margin-left:10px;">
-      <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.sector1', this);">Lorem Ipsum <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.sector2', this);">Dolor sit Amet <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.sector3', this);">Euismod Tincidunt <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.DP', this);">Disaster Preparedness <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.PRJMGMT', this);">Project Management <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.DATA', this);">Data <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.DR', this);">Disaster Response <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.PRGMAP', this);">Program Map <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.ANALYSIS', this);">Analysis <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <button class="btn btn-small btn-2" type="button" onclick="toggleSector('.ONLINE', this);">Online <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <hr style="margin-bottom:0;">
       </span></h6></p>
     </div>
       <div class="container">
       <div class="row thumbnailGallery">
-        <div class="col-sm-3 sector1 AFRICA">
+        <div class="col-sm-3 DP AFRICA">
           <a onclick="callModal(this);" class="thumbnail T001">
             <img src="img/floodRisk_thumb.png" alt="">
             <div class="caption">            
@@ -93,7 +116,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 PRJMGMT LAC">
           <a onclick="callModal(this);" class="thumbnail T002">
             <img src="img/2011_09_29_Blocks_Nhoods_Agencies_All_CF_thumb.png" alt="">
             <div class="caption">            
@@ -104,18 +127,18 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 DATA LAC">
           <a onclick="callModal(this);" class="thumbnail T003">
             <img src="img/2012_03_09_Campeche_Satellite_SDE_thumb.png" alt="">
             <div class="caption">            
-              <h4>Cempeche Satellite <br><small>subtitle/date?</small></h4>        
+              <h4>Cempeche Satellite <br><small>GPS tracks? subtitle/date?</small></h4>        
             </div>
             <div class="detailedDescription">
             This is a detailed description giving wonderful information specific to this particular map. This fascinating information will only be displayed at the bottom of the modal when the user views the full size map.
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 DP LAC">
           <a onclick="callModal(this);" class="thumbnail T004">
             <img src="img/2011_12_29_2YRDRR_Final_thumb.png" alt="">
             <div class="caption">            
@@ -127,7 +150,7 @@ function googleTranslateElementInit() {
           </a>
         </div>
 
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 PRJMGMT LAC">
           <a onclick="callModal(this);" class="thumbnail T005">
             <img src="img/2012_05_23_Central_America_LARRA_Communities_5-12_thumb.png" alt="">
             <div class="caption">            
@@ -138,7 +161,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 AMEE">
+        <div class="col-sm-3 PRJMGMT AMEE">
           <a onclick="callModal(this);" class="thumbnail T006">
             <img src="img/2012_06_12_MyanmarFinal_thumb.png" alt="">
             <div class="caption">            
@@ -149,7 +172,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 PRJMGMT LAC">
           <a onclick="callModal(this);" class="thumbnail T007">
             <img src="img/2012_08_05_PaP_Bilateral_and_Partners_Overview_7.27.11_thumb.png" alt="">
             <div class="caption">            
@@ -160,7 +183,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 AFRICA">
+        <div class="col-sm-3 PRJMGMT AFRICA">
           <a onclick="callModal(this);" class="thumbnail T008">
             <img src="img/2012_08_17_Cases_v_Volunteers_thumb.png" alt="">
             <div class="caption">            
@@ -171,7 +194,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 GLOBAL">
+        <div class="col-sm-3 DR GLOBAL">
           <a onclick="callModal(this);" class="thumbnail T009">
             <img src="img/2013_01_30_DisasterResponse_Q2_thumb.png" alt="">
             <div class="caption">            
@@ -182,7 +205,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 PRGMAP LAC">
           <a onclick="callModal(this);" class="thumbnail T010">
             <img src="img/2013_01_31_Latin_America_Programs_FY13_InternalV2_thumb.png" alt="">
             <div class="caption">            
@@ -193,7 +216,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 USA">
+        <div class="col-sm-3 PRGMAP USA">
           <a onclick="callModal(this);" class="thumbnail T011">
             <img src="img/2013_03_29_RFL_MAP_thumb.png" alt="">
             <div class="caption">            
@@ -204,7 +227,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 AMEE">
+        <div class="col-sm-3 PRGMAP AMEE">
           <a onclick="callModal(this);" class="thumbnail T012">
             <img src="img/2013_04_03_ARCT_FY14_Eurasia_Programs_thumb.png" alt="">
             <div class="caption">            
@@ -215,7 +238,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 GLOBAL">
+        <div class="col-sm-3 DR GLOBAL">
           <a onclick="callModal(this);" class="thumbnail T013">
             <img src="img/2013_3_28_ResponseAppeals_thumb.png" alt="">
             <div class="caption">            
@@ -226,7 +249,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 AMEE">
+        <div class="col-sm-3 PRJMGMT AMEE">
           <a onclick="callModal(this);" class="thumbnail T014">
             <img src="img/AMEE_PO_Coverage_June2013_thumb.png" alt="">
             <div class="caption">            
@@ -237,7 +260,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 PRJMGMT LAC">
           <a onclick="callModal(this);" class="thumbnail T015">
             <img src="img/ARC_P019_metropolitan_camps_geology_analysis_thumb.png" alt="">
             <div class="caption">            
@@ -248,7 +271,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 ANALYSIS LAC">
           <a onclick="callModal(this);" class="thumbnail T016">
             <img src="img/ARC_P062_v1_LAMIKA_STUDY_AREA_UNSAFE_AREAS_low_thumb.png" alt="">
             <div class="caption">            
@@ -259,7 +282,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 ANALYSIS LAC">
           <a onclick="callModal(this);" class="thumbnail T017">
             <img src="img/ARC_P066_V2_CAMPECHE_FIELD_LIGHTING_high_thumb.png" alt="">
             <div class="caption">            
@@ -270,7 +293,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 PRJMGMT LAC">
           <a onclick="callModal(this);" class="thumbnail T018">
             <img src="img/ARC_P074_DELINEATION_low_thumb.png" alt="">
             <div class="caption">            
@@ -281,7 +304,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 ANALYSIS LAC">
           <a onclick="callModal(this);" class="thumbnail T019">
             <img src="img/ARC_P09_metropolitan_camps_geology_analysis_thumb.png" alt="">
             <div class="caption">            
@@ -292,7 +315,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 PRGMAP LAC">
           <a onclick="callModal(this);" class="thumbnail T020">
             <img src="img/CaribbeanProgramsFY14_thumb.png" alt="">
             <div class="caption">            
@@ -303,7 +326,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 GLOBAL">
+        <div class="col-sm-3 PRGMAP GLOBAL">
           <a onclick="callModal(this);" class="thumbnail T021">
             <img src="img/GDPC_EngagementMap_FY2013_thumb.png" alt="">
             <div class="caption">            
@@ -314,7 +337,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 AFRICA">
+        <div class="col-sm-3 ANALYSIS AFRICA">
           <a onclick="callModal(this);" class="thumbnail T022">
             <img src="img/GuluFireRisk_thumb.png" alt="">
             <div class="caption">            
@@ -325,7 +348,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div class="col-sm-3 sector1 LAC">
+        <div class="col-sm-3 DATA LAC">
           <a onclick="callModal(this);" class="thumbnail T023">
             <img src="img/LaPlata_2_thumb.png" alt="">
             <div class="caption">            
@@ -381,8 +404,8 @@ function googleTranslateElementInit() {
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
-    <script src="js/leaflet.markercluster-src.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/leaflet.markercluster-src.js"></script>
     <script src="js/main.js"></script>
 
   </body>
