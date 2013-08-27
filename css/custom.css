@@ -90,24 +90,19 @@ a.leaflet-control-zoom-out {
 }
 
 
-
-
-
-
-
-.btn-1 {
+.btn-extent {
   background-color: #C4DFF6;
 }
-.btn-1:hover,
-.btn-1:focus {
+.btn-extent:hover,
+.btn-extent:focus {
   background-color: #56A0D3;  
 }
 
-.btn-2{
+.btn-sector{
   background-color: #8ec06c;
 }
-.btn-2:hover,
-.btn-2:focus {
+.btn-sector:hover,
+.btn-sector:focus {
   background-color: #537b35;  
 }
 

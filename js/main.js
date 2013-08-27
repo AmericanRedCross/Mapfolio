@@ -1,58 +1,88 @@
 // THIS IS FOR THE IMAGE GALLERY, MAP STUFF START FARTHER DOWN
 var windowHeight = $(window).height();
+var extentButtons = $("#extentButtons").children();
+var sectorButtons = $("#sectorButtons").children();
+var visibleExtent = [];
+var visibleSectors = [];
+var thumbnails = $(".thumbnailGallery").children();
 
-function toggleSector (sectorClass, element) {
-	var status = $(element).children();
-	if ($(status).hasClass("glyphicon-ok")){
-		$(status).removeClass("glyphicon-ok");
-		$(status).addClass("glyphicon-remove");
-		$(sectorClass).hide();
-	} else {
-		$(status).removeClass("glyphicon-remove");
-		$(status).addClass("glyphicon-ok");
-		$(sectorClass).show();
-	}    
+function toggleFilter (filter, element) {
+    // steps if a extent filter is clicked
+    if($(element).hasClass("btn-extent")){
+        // set global var for extent (only 1 at a time)
+        visibleExtent = filter;
+        // adjust display of checks and Xs
+        // has class "filtering" = active
+        $.each(extentButtons, function(i, button){
+            var buttonid = $(button).attr("id");
+            var buttonSpan = $(button).children();            
+            if(buttonid === filter){
+                $(buttonSpan).removeClass("glyphicon-remove");        
+                $(buttonSpan).addClass("glyphicon-ok");
+                $(button).addClass("filtering");
+            } else {
+                $(buttonSpan).removeClass("glyphicon-ok");
+                $(buttonSpan).addClass("glyphicon-remove");
+                $(button).removeClass("filtering");
+            }
+        })        
+    // steps if sector filter is clicked
+    } else {
+        // adjust display for clicked sector button
+        var thisSpan = $(element).children();
+        if($(element).hasClass("filtering")){
+            $(element).removeClass("filtering");            
+            $(thisSpan).removeClass("glyphicon-ok");
+            $(thisSpan).addClass("glyphicon-remove");
+        } else{
+            $(element).addClass("filtering");
+            $(thisSpan).removeClass("glyphicon-remove");
+            $(thisSpan).addClass("glyphicon-ok");   
+        }
+    }
+    // check to see what which extent is active (only 1 at a time)
+    $.each(extentButtons, function(i, button){
+        if($(button).hasClass("filtering")){
+            var buttonid = $(button).attr("id");
+            visibleExtent = buttonid;
+        }
+    })
+    // check to see what sectors are active
+    visibleSectors = [];
+    $.each(sectorButtons, function(i, button){
+        var buttonid = $(button).attr("id");
+        if($(button).hasClass("filtering")){
+            visibleSectors.push(buttonid);
+        }
+    })
+    toggleThumbnails();
 }
 
-function toggleExtent (extentFilter) {
-	var thumbnails = $(".thumbnailGallery").children();
-    if (extentFilter === "ALL"){
-        $(thumbnails).show();
-    } else {
-        $(thumbnails).hide();
-        $.each(thumbnails, function(i, thumbnail){
-            if($(thumbnail).hasClass(extentFilter)){
+function toggleThumbnails (){
+    $(thumbnails).hide();
+    $.each(thumbnails, function(iT, thumbnail){        
+        $.each(visibleSectors, function(iS, sector){
+            if($(thumbnail).hasClass(sector) && $(thumbnail).hasClass(visibleExtent)){
                 $(thumbnail).show();
             }
         })
-    }
-    var buttons = $("#extentButtons").children();
-    $.each(buttons, function(i, button){
-        var buttonElements = $(button).children();
-        if($(button).hasClass(extentFilter)){            
-            $(buttonElements).removeClass("glyphicon-remove");
-            $(buttonElements).addClass("glyphicon-ok");
-        } else {
-            $(buttonElements).removeClass("glyphicon-ok");
-            $(buttonElements).addClass("glyphicon-remove");
-        }
-    });
-    markersToMap(extentFilter);
-} 
+    })
+    markersToMap();
+}
 
 function callModal (item) {
-	var title = $(item).children('.caption').html();
+	var title = $(item).find('.caption').html();
 	$(".modal-title").empty();
 	$(".modal-title").append(title);
 	
-	var thumbSrc = $(item).children('img').attr("src");
+	var thumbSrc = $(item).find('img').attr("src");
 	var mapSrc = thumbSrc.replace("_thumb", "");
     var img_maxHeight = windowHeight*0.60;
 	var mapImg = '<img src="' + mapSrc + '" alt="" ' + 'style="max-height:' + img_maxHeight + 'px">';
 	$(".modal-body").empty();
 	$(".modal-body").append(mapImg);
 
-    var description = $(item).children('.detailedDescription').html();
+    var description = $(item).find('.detailedDescription').html();
     $(".modal-detailedDescription").empty();
     $(".modal-detailedDescription").append(description);    
 	
@@ -66,9 +96,6 @@ function callModal (item) {
 function showDisclaimer() {
     window.alert("The maps on this page do not imply the expression of any opinion on the part of the American Red Cross concerning the legal status of a territory or of its authorities.");
 }
-
-
-
 
 // MAP SHIT STARTS HERE
 
@@ -122,13 +149,12 @@ function mapDisplay() {
 
 // on marker click open modal
 function centroidClick (e) {
-    var thumbnail_id_class = "." + e.target.feature.properties.thumbnail_id;
-    var sector = e.target.feature.properties.sector;
-    if (sector === "ONLINE") {
-        url = $(thumbnail_id_class).attr('href');
+    var thumbnail_id = "#" + e.target.feature.properties.thumbnail_id;    
+    if ($(thumbnail_id).hasClass("ONLINE")) {
+        url = $(thumbnail_id).find('a').attr('href');
         window.open(url, '_blank');
     } else {
-        callModal(thumbnail_id_class);
+        callModal(thumbnail_id);
     }    
 }
 
@@ -189,9 +215,7 @@ function formatCentroids(data){
             "type": "Feature",
             "properties": {
                 "name": item.name,
-                "thumbnail_id": item.thumbnail_id,
-                "extent": item.extent,
-                "sector": item.sector,                        
+                "thumbnail_id": item.thumbnail_id,                                        
             },
             "geometry": {
                 "type": "Point",
@@ -200,18 +224,25 @@ function formatCentroids(data){
         }
         centroids.push(mapCoord);
     }); 
-    markersToMap('ALL');
+    markersToMap();
 }
 
-function markersToMap(extentFilter){
+function markersToMap(){
     map.removeLayer(markers);
     markers = new L.MarkerClusterGroup({showCoverageOnHover:false, spiderfyDistanceMultiplier:3,});
+    idList = [];
     displayedPoints=[];
-    $.each(centroids, function (i, centroid){
-        var currentExtent = centroid.properties.extent;
-        if (extentFilter === currentExtent || extentFilter === "ALL") {
-            displayedPoints.push(centroid);
+    // build array of visible thumbnail IDs
+    $.each(thumbnails, function (i, thumbnail){
+        if($(thumbnail).css("display") !== "none"){
+            idList.push($(thumbnail).attr("id"));
         }
+    })
+    $.each(centroids, function (i, centroid){
+        var centroid_id = centroid.properties.thumbnail_id;
+        if ($.inArray(centroid_id, idList) !== -1){
+            displayedPoints.push(centroid);
+        }        
     })    
 
     marker = L.geoJson(displayedPoints, {
@@ -219,8 +250,8 @@ function markersToMap(extentFilter){
             return L.circleMarker(latlng, centroidOptions);
         },
         onEachFeature: function(feature, layer) {
-            var thumbnail_id_class = "." + feature.properties.thumbnail_id;
-            var popupContent = $(thumbnail_id_class).children('.caption').html();
+            var thumbnail_id = "#" + feature.properties.thumbnail_id;
+            var popupContent = $(thumbnail_id).find('.caption').html();
             var popupOptions = {
                 'minWidth': 30,
                 'offset': [0,-10],
@@ -237,14 +268,20 @@ function markersToMap(extentFilter){
     markers.addLayer(marker);
     markers.addTo(map);
     markersBounds = markers.getBounds();
+    markersBounds._northEast.lat += 5;
+    markersBounds._northEast.lng += 5;
+    markersBounds._southWest.lat -= 5;
+    markersBounds._southWest.lat -= 5;
     map.fitBounds(markersBounds);
 } 
 
 
-$(window).resize(function(){
-    map.fitBounds(markersBounds);
+$(window).resize(function(){    
+    map.fitBounds(markersBounds);    
     windowHeight = $(window).height();
 })
+
+
 
 // reset map bounds using Zoom to Extent button
 function zoomOut() {
