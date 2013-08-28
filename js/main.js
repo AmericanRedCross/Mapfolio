@@ -97,15 +97,12 @@ function callModal (item) {
     var img_maxHeight = (windowHeight*0.60).toString() + "px";
     $(".modal-title").empty();
     $(".modal-detailedDescription").empty();
-	$(".modal-title").append(title);
-    $(".modal-detailedDescription").append(description); 
+	$(".modal-title").html(title);
+    $(".modal-detailedDescription").html(description); 
     $(".modal-img").css('max-height', img_maxHeight);
-	$("#downloadPDF").attr("href", pdfSrc);  
-    $('#myModal').modal();
-    $(".modal-img").load(function(){
-        $(this).unbind('load');
-        $(this).attr('src', mapSrc);
-    }).attr('src', 'img/loader.gif');
+    $(".modal-img").attr('src', mapSrc);
+	$("#downloadPDF").attr("href", pdfSrc);    
+    $('#myModal').modal();    
 }
 
 //disclaimer text
