@@ -95,10 +95,12 @@ function callModal (item) {
 	
 	var thumbSrc = $(item).find('img').attr("src");
 	var mapSrc = thumbSrc.replace("_thumb", "");
-    var img_maxHeight = windowHeight*0.60;
-	var mapImg = '<img src="' + mapSrc + '" alt="" ' + 'style="max-height:' + img_maxHeight + 'px">';
-	$(".modal-body").empty();
-	$(".modal-body").append(mapImg);
+    var img_maxHeight = (windowHeight*0.60).toString() + "px";
+    $(".modal-img").css('max-height', img_maxHeight);
+	$(".modal-img").load(function(){
+        $(this).unbind('load');
+        $(this).attr('src', mapSrc);
+    }).attr('src', 'img/loader.gif');	
 
     var description = $(item).find('.detailedDescription').html();
     $(".modal-detailedDescription").empty();
