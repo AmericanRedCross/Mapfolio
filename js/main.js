@@ -90,26 +90,22 @@ function toggleThumbnails (){
 
 function callModal (item) {
 	var title = $(item).find('.caption').html();
-	$(".modal-title").empty();
-	$(".modal-title").append(title);
-	
+    var description = $(item).find('.detailedDescription').html();
 	var thumbSrc = $(item).find('img').attr("src");
-	var mapSrc = thumbSrc.replace("_thumb", "");
+    var mapSrc = thumbSrc.replace("_thumb", "");
+    var pdfSrc = "pdf" + mapSrc.substring(3).replace(".png", ".pdf");
     var img_maxHeight = (windowHeight*0.60).toString() + "px";
+    $(".modal-title").empty();
+    $(".modal-detailedDescription").empty();
+	$(".modal-title").append(title);
+    $(".modal-detailedDescription").append(description); 
     $(".modal-img").css('max-height', img_maxHeight);
-	$(".modal-img").load(function(){
+	$("#downloadPDF").attr("href", pdfSrc);  
+    $('#myModal').modal();
+    $(".modal-img").load(function(){
         $(this).unbind('load');
         $(this).attr('src', mapSrc);
-    }).attr('src', 'img/loader.gif');	
-
-    var description = $(item).find('.detailedDescription').html();
-    $(".modal-detailedDescription").empty();
-    $(".modal-detailedDescription").append(description);    
-	
-	var pdfSrc = "pdf" + mapSrc.substring(3).replace(".png", ".pdf");
-	$("#downloadPDF").attr("href", pdfSrc);  
-
-	$('#myModal').modal();
+    }).attr('src', 'img/loader.gif');
 }
 
 //disclaimer text
