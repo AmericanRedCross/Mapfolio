@@ -93,6 +93,7 @@ a.leaflet-control-zoom-out {
 
 .btn-extent {
   background-color: #C4DFF6;
+  margin-bottom: 5px;
 }
 .btn-extent:hover,
 .btn-extent:focus {
@@ -101,6 +102,7 @@ a.leaflet-control-zoom-out {
 
 .btn-sector{
   background-color: #8ec06c;
+  margin-bottom: 5px;
 }
 .btn-sector:hover,
 .btn-sector:focus {

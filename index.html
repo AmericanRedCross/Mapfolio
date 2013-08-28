@@ -92,7 +92,9 @@ function googleTranslateElementInit() {
       <button id="GLOBAL" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('GLOBAL', this);">Global <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
       </span></h6></p>        
       <p><h6><b>Sector:</b>
-      <span id="sectorButtons"  style="margin-left:10px;">
+      <span style="margin-left:10px;">
+      <button id="refreshSectors" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('refreshSectors', this);" style="margin-right:10px;">All <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button> 
+      <div id="sectorButtons" style="display:inline;">
       <button id="DP" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DP', this);">Disaster Preparedness <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <button id="PRJMGMT" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('PRJMGMT', this);">Project Management <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <button id="DATA" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DATA', this);">Data <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
@@ -100,6 +102,7 @@ function googleTranslateElementInit() {
       <button id="PRGMAP" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('PRGMAP', this);">Program Map <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <button id="ANALYSIS" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('ANALYSIS', this);">Analysis <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
       <button id="ONLINE" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('ONLINE', this);">Online <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+      </div>
       <hr style="margin-bottom:0;">
       </span></h6></p>
     </div>
@@ -328,7 +331,7 @@ function googleTranslateElementInit() {
         </div>
         <div id="T021" class="col-sm-3 ALL PRGMAP GLOBAL">
           <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/GDPC_EngagementMap_FY2013_thumb.png" alt="">
+            <img src="img/GDPC_2pgEngagementMap_FY2013_thumb.png" alt="">
             <div class="caption">            
               <h4>GDPC Engagement <br><small> FY 2013</small></h4>        
             </div>

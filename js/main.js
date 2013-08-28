@@ -28,18 +28,36 @@ function toggleFilter (filter, element) {
         })        
     // steps if sector filter is clicked
     } else {
-        // adjust display for clicked sector button
-        var thisSpan = $(element).children();
-        if($(element).hasClass("filtering")){
-            $(element).removeClass("filtering");            
-            $(thisSpan).removeClass("glyphicon-ok");
-            $(thisSpan).addClass("glyphicon-remove");
-        } else{
-            $(element).addClass("filtering");
-            $(thisSpan).removeClass("glyphicon-remove");
-            $(thisSpan).addClass("glyphicon-ok");   
-        }
+        if(filter === "refreshSectors"){
+            var refreshSectorsSpan = $(element).children();
+            $(refreshSectorsSpan).removeClass("glyphicon-remove");
+            $(refreshSectorsSpan).addClass("glyphicon-ok");            
+            $.each(sectorButtons, function(i,button){
+                var buttonSpan = $(button).children();
+                $(buttonSpan).removeClass("glyphicon-remove");
+                $(buttonSpan).addClass("glyphicon-ok");
+                $(button).addClass("filtering");
+            })
+        } else {
+            var thisSpan = $(element).children();
+            if($(element).hasClass("filtering")){
+                $(element).removeClass("filtering");            
+                $(thisSpan).removeClass("glyphicon-ok");
+                $(thisSpan).addClass("glyphicon-remove");
+                $("#refreshSectors").children().removeClass("glyphicon-ok");
+                $("#refreshSectors").children().addClass("glyphicon-remove");
+            } else{
+                $(element).addClass("filtering");
+                $(thisSpan).removeClass("glyphicon-remove");
+                $(thisSpan).addClass("glyphicon-ok");   
+            } 
+        }        
     }
+    if($(sectorButtons).children().hasClass("glyphicon-remove") === false){
+        $("#refreshSectors").children().removeClass("glyphicon-remove");
+        $("#refreshSectors").children().addClass("glyphicon-ok");        
+    }
+
     // check to see what which extent is active (only 1 at a time)
     $.each(extentButtons, function(i, button){
         if($(button).hasClass("filtering")){
@@ -49,9 +67,9 @@ function toggleFilter (filter, element) {
     })
     // check to see what sectors are active
     visibleSectors = [];
-    $.each(sectorButtons, function(i, button){
-        var buttonid = $(button).attr("id");
+    $.each(sectorButtons, function(i, button){        
         if($(button).hasClass("filtering")){
+            var buttonid = $(button).attr("id");
             visibleSectors.push(buttonid);
         }
     })
