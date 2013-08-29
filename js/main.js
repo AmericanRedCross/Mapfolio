@@ -1,4 +1,3 @@
-// THIS IS FOR THE IMAGE GALLERY, MAP STUFF START FARTHER DOWN
 var windowHeight = $(window).height();
 var extentButtons = $("#extentButtons").children();
 var sectorButtons = $("#sectorButtons").children();
@@ -57,7 +56,6 @@ function toggleFilter (filter, element) {
         $("#refreshSectors").children().removeClass("glyphicon-remove");
         $("#refreshSectors").children().addClass("glyphicon-ok");        
     }
-
     // check to see what which extent is active (only 1 at a time)
     $.each(extentButtons, function(i, button){
         if($(button).hasClass("filtering")){
@@ -73,7 +71,14 @@ function toggleFilter (filter, element) {
             visibleSectors.push(buttonid);
         }
     })
-    toggleThumbnails();
+    toggleThumbnails();    
+}
+
+function refreshFilters (){
+    $('#noThumbnails').hide();
+    visibleExtent = "ALL";
+    var filter = $("#refreshSectors");
+    toggleFilter('refreshSectors', filter);
 }
 
 function toggleThumbnails (){
@@ -85,7 +90,13 @@ function toggleThumbnails (){
             }
         })
     })
-    markersToMap();
+    thumbnailCount = $(thumbnails).filter(function(){return $(this).css('display') === 'block';}).length;
+    if (thumbnailCount === 0){
+        map.removeLayer(markers);
+        $('#noThumbnails').show();
+    } else {    
+        markersToMap();
+    }
 }
 
 function callModal (item) {
@@ -110,8 +121,8 @@ function showDisclaimer() {
     window.alert("The maps on this page do not imply the expression of any opinion on the part of the American Red Cross concerning the legal status of a territory or of its authorities.");
 }
 
-// MAP SHIT STARTS HERE
 
+// MAP SHIT STARTS HERE
 var centroids = [];
 var markersBounds = [];
 var displayedPoints = [];
