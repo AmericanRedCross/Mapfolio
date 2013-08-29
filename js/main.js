@@ -77,6 +77,19 @@ function toggleFilter (filter, element) {
 function refreshFilters (){
     $('#noThumbnails').hide();
     visibleExtent = "ALL";
+    $.each(extentButtons, function(i, button){
+        var buttonid = $(button).attr("id");
+        var buttonSpan = $(button).children();            
+        if(buttonid === "ALL"){
+            $(buttonSpan).removeClass("glyphicon-remove");        
+            $(buttonSpan).addClass("glyphicon-ok");
+            $(button).addClass("filtering");
+        } else {
+            $(buttonSpan).removeClass("glyphicon-ok");
+            $(buttonSpan).addClass("glyphicon-remove");
+            $(button).removeClass("filtering");
+        }
+    })
     var filter = $("#refreshSectors");
     toggleFilter('refreshSectors', filter);
 }
