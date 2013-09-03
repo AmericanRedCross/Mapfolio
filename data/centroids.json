@@ -214,5 +214,29 @@
     "sector": "x",
     "latitude": "38.895111",
     "longitude": "-77.036667"
+  },
+  {
+    "name": "2013_01_31_Africa_Programs_FY13_External",
+    "thumbnail_id": "T028",
+    "extent": "AFRICA",
+    "sector": "x",
+    "latitude": "15.965",
+    "longitude": "14.559"
+  },
+  {
+    "name": "2012_01_18_Africa_Programs_January2012",
+    "thumbnail_id": "T029",
+    "extent": "AFRICA",
+    "sector": "x",
+    "latitude": "15.965",
+    "longitude": "14.559"
+  },
+  {
+    "name": "2011_03_14_Africa_Programs",
+    "thumbnail_id": "T030",
+    "extent": "AFRICA",
+    "sector": "x",
+    "latitude": "15.965",
+    "longitude": "14.559"
   }
 ]
