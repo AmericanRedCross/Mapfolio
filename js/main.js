@@ -37,6 +37,16 @@ function toggleFilter (filter, element) {
                 $(buttonSpan).addClass("glyphicon-ok");
                 $(button).addClass("filtering");
             })
+        } if(filter === "clearSectors"){
+            $.each(sectorButtons, function(i,button){
+                var buttonSpan = $(button).children();
+                $(buttonSpan).removeClass("glyphicon-ok");
+                $(buttonSpan).addClass("glyphicon-remove");
+                $(button).removeClass("filtering");
+                $("#refreshSectors").children().removeClass("glyphicon-ok");
+                $("#refreshSectors").removeClass("filtering");                
+                $("#refreshSectors").children().addClass("glyphicon-remove");
+            })
         } else {
             var thisSpan = $(element).children();
             if($(element).hasClass("filtering")){
@@ -54,7 +64,8 @@ function toggleFilter (filter, element) {
     }
     if($(sectorButtons).children().hasClass("glyphicon-remove") === false){
         $("#refreshSectors").children().removeClass("glyphicon-remove");
-        $("#refreshSectors").children().addClass("glyphicon-ok");        
+        $("#refreshSectors").children().addClass("glyphicon-ok");
+        $("#refreshSectors").addClass("filtering");                
     }
     // check to see what which extent is active (only 1 at a time)
     $.each(extentButtons, function(i, button){
