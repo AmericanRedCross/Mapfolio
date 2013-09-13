@@ -93,14 +93,21 @@ a.leaflet-control-zoom-out {
   background-color: #C4DFF6;
   margin-bottom: 5px;
 }
+.btn-extent.filtering {
+  background-color: #82bbec;
+}
 .btn-extent:hover,
 .btn-extent:focus {
-  background-color: #56A0D3;  
+  background-color: #56A0D3  
 }
+
 
 .btn-sector{
   background-color: #8ec06c;
   margin-bottom: 5px;
+}
+.btn-sector.filtering {
+  background-color: #679c43;
 }
 .btn-sector:hover,
 .btn-sector:focus {
