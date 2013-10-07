@@ -30,7 +30,9 @@ function toggleFilter (filter, element) {
         if(filter === "refreshSectors"){
             var refreshSectorsSpan = $(element).children();
             $(refreshSectorsSpan).removeClass("glyphicon-unchecked");
-            $(refreshSectorsSpan).addClass("glyphicon-check");            
+            $(refreshSectorsSpan).addClass("glyphicon-check");
+            $(element).addClass("filtering");
+            $("#sectorButtons").addClass("allOn");                        
             $.each(sectorButtons, function(i,button){
                 var buttonSpan = $(button).children();
                 $(buttonSpan).removeClass("glyphicon-check");
@@ -39,7 +41,9 @@ function toggleFilter (filter, element) {
             })
         } else {
             $("#refreshSectors").children().removeClass("glyphicon-check");
-            $("#refreshSectors").children().addClass("glyphicon-unchecked");                         
+            $("#refreshSectors").children().addClass("glyphicon-unchecked"); 
+            $("#refreshSectors").removeClass("filtering");
+            $("#sectorButtons").removeClass("allOn");                                     
             $.each(sectorButtons, function(i,button){
                 var buttonId = $(button).attr("id");
                 var buttonSpan = $(button).children();
@@ -81,12 +85,12 @@ function refreshFilters (){
         var buttonid = $(button).attr("id");
         var buttonSpan = $(button).children();            
         if(buttonid === "ALL"){
-            $(buttonSpan).removeClass("glyphicon-remove");        
-            $(buttonSpan).addClass("glyphicon-ok");
+            $(buttonSpan).removeClass("glyphicon-unchecked");        
+            $(buttonSpan).addClass("glyphicon-check");
             $(button).addClass("filtering");
         } else {
-            $(buttonSpan).removeClass("glyphicon-ok");
-            $(buttonSpan).addClass("glyphicon-remove");
+            $(buttonSpan).removeClass("glyphicon-check");
+            $(buttonSpan).addClass("glyphicon-unchecked");
             $(button).removeClass("filtering");
         }
     })

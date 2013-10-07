@@ -113,6 +113,9 @@ a.leaflet-control-zoom-out {
 .btn-sector:focus {
   background-color: #537b35;  
 }
+#sectorButtons.allOn button {
+  background-color: #8ec06c;
+}
 
 .modal-dialog {
   width: 70%;
