@@ -80,29 +80,28 @@ function googleTranslateElementInit() {
 
       <div class="container">
         
-      <h4>Filters: <small> Use the buttons to explore this collection and view maps from a specific region or sector of interest. For example, to view Africa program maps: click 'Africa' for extent; click 'None' for sector; and then click 'Program Map' to turn on only that sector filter. Please be aware that we have produced maps not included here and these maps represent only a portion of the programs, activities, and engagement of the American Red Cross.</small></h4> 
+      <h4>Filters: <small> Use the buttons to explore this collection and view maps from a specific region or sector of interest. For example, to view Africa program maps: click 'Africa' for extent and then click 'Program Map' to filter by that sector. The checked boxes indicate the active filters. Please be aware that we have produced maps not included here and these maps represent only a portion of the programs, activities, and engagement of the American Red Cross.</small></h4> 
 
       <p><h6><b>Extent:</b>
       <span  id="extentButtons" style="margin-left:10px;">      
-      <button id="ALL" class="btn btn-small btn-extent filtering" type="button" onclick="toggleFilter('ALL', this);" style="margin-right:10px;">All <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button> 
-      <button id="LAC" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('LAC', this);">LAC <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
-      <button id="AMEE" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('AMEE', this);">AMEE <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
-      <button id="AFRICA" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('AFRICA', this);">Africa <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
-      <button id="USA" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('USA', this);">Domestic <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button> 
-      <button id="GLOBAL" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('GLOBAL', this);">Global <span class="glyphicon glyphicon-remove" style="margin-left:4px;"></span></button>
+      <button id="ALL" class="btn btn-small btn-extent filtering" type="button" onclick="toggleFilter('ALL', this);" style="margin-right:10px;">All <span class="glyphicon glyphicon-check" style="margin-left:4px;"></span></button> 
+      <button id="LAC" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('LAC', this);">LAC <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+      <button id="AMEE" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('AMEE', this);">AMEE <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+      <button id="AFRICA" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('AFRICA', this);">Africa <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+      <button id="USA" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('USA', this);">Domestic <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button> 
+      <button id="GLOBAL" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('GLOBAL', this);">Global <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
       </span></h6></p>        
       <p><h6><b>Sector:</b>
       <span style="margin-left:10px;">
-      <button id="refreshSectors" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('refreshSectors', this);" style="">All <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button> 
-      <button id="clearSectors" class="btn btn-small btn-sector" type="button" onclick="toggleFilter('clearSectors', this);" style="margin-right:10px;">None</button>       
+      <button id="refreshSectors" class="btn btn-small btn-sector" type="button" onclick="toggleFilter('refreshSectors', this);" style="margin-right:10px;">All <span class="glyphicon glyphicon-check" style="margin-left:4px;"></span></button>              
       <div id="sectorButtons" style="display:inline;">
-      <button id="DP" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DP', this);">Disaster Preparedness <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button id="PRJMGMT" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('PRJMGMT', this);">Project Management <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button id="DATA" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DATA', this);">Data <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button id="DR" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DR', this);">Disaster Response <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button id="PRGMAP" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('PRGMAP', this);">Program Map <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button id="ANALYSIS" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('ANALYSIS', this);">Analysis <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
-      <button id="ONLINE" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('ONLINE', this);">Online <span class="glyphicon glyphicon-ok" style="margin-left:4px;"></span></button>
+        <button id="DP" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DP', this);">Disaster Preparedness <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+        <button id="PRJMGMT" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('PRJMGMT', this);">Project Management <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+        <button id="DATA" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DATA', this);">Data <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+        <button id="DR" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DR', this);">Disaster Response <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+        <button id="PRGMAP" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('PRGMAP', this);">Program Map <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+        <button id="ANALYSIS" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('ANALYSIS', this);">Analysis <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+        <button id="ONLINE" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('ONLINE', this);">Online <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
       </div>
       <hr style="margin-bottom:0;">
       </span></h6></p>
