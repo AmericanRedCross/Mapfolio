@@ -121,7 +121,7 @@ function callModal (item) {
     var description = $(item).find('.detailedDescription').html();
 	var thumbSrc = $(item).find('img').attr("src");
     var mapSrc = thumbSrc.replace("_thumb", "");
-    var pdfSrc = "pdf" + mapSrc.substring(3).replace(".png", ".pdf");
+    var pdfSrc = "pdf" + mapSrc.substring(8).replace(".jpg", ".pdf");
     var img_maxHeight = (windowHeight*0.60).toString() + "px";
     $(".modal-title").empty();
     $(".modal-detailedDescription").empty();

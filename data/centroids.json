@@ -1,242 +1,250 @@
 [
   {
-    "name": "floodRisk",
-    "thumbnail_id": "T001",
-    "extent": "AFRICA",
-    "sector": "x",
-    "latitude": "0.9676",
-    "longitude": "34.2914"
+    "name":"floodRisk",
+    "thumbnail_id":"T001",
+    "extent":"AFRICA",
+    "sector":"x",
+    "latitude":0.9676,
+    "longitude":34.2914
   },
   {
-    "name": "2011_09_29_Blocks_Nhoods_Agencies_All_CF",
-    "thumbnail_id": "T002",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "18.5135",
-    "longitude": "-72.3467"
+    "name":"2011_09_29_Blocks_Nhoods_Agencies_All_CF",
+    "thumbnail_id":"T002",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":18.5135,
+    "longitude":-72.3467
   },
   {
-    "name": "2012_03_09_Campeche_Satellite_SDE",
-    "thumbnail_id": "T003",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "18.5257",
-    "longitude": "-72.337"
+    "name":"2012_03_09_Campeche_Satellite_SDE",
+    "thumbnail_id":"T003",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":18.5257,
+    "longitude":-72.337
   },
   {
-    "name": "2011_12_29_2YRDRR_Final",
-    "thumbnail_id": "T004",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "18.539",
-    "longitude": "-72.3348"
+    "name":"2011_12_29_2YRDRR_Final",
+    "thumbnail_id":"T004",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":18.539,
+    "longitude":-72.3348
   },
   {
-    "name": "2012_05_23_Central_America_LARRA_Communities_5-12",
-    "thumbnail_id": "T005",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "12.15",
-    "longitude": "-86.266667"
+    "name":"2012_05_23_Central_America_LARRA_Communities_5-12",
+    "thumbnail_id":"T005",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":12.15,
+    "longitude":-86.266667
   },
   {
-    "name": "2012_06_12_MyanmarFinal",
-    "thumbnail_id": "T006",
-    "extent": "AMEE",
-    "sector": "x",
-    "latitude": "19.75",
-    "longitude": "96.1"
+    "name":"2012_06_12_MyanmarFinal",
+    "thumbnail_id":"T006",
+    "extent":"AMEE",
+    "sector":"x",
+    "latitude":19.75,
+    "longitude":96.1
   },
   {
-    "name": "2012_08_05_PaP_Bilateral_and_Partners_Overview_7.27.11",
-    "thumbnail_id": "T007",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "18.5494",
-    "longitude": "-72.303"
+    "name":"2012_08_05_PaP_Bilateral_and_Partners_Overview_7.27.11",
+    "thumbnail_id":"T007",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":18.5494,
+    "longitude":-72.303
   },
   {
-    "name": "2012_08_17_Cases_v_Volunteers",
-    "thumbnail_id": "T008",
-    "extent": "AFRICA",
-    "sector": "x",
-    "latitude": "8.48445",
-    "longitude": "-13.23445"
+    "name":"2012_08_17_Cases_v_Volunteers",
+    "thumbnail_id":"T008",
+    "extent":"AFRICA",
+    "sector":"x",
+    "latitude":8.48445,
+    "longitude":-13.23445
   },
   {
-    "name": "2013_01_30_DisasterResponse_Q2",
-    "thumbnail_id": "T009",
-    "extent": "GLOBAL",
-    "sector": "x",
-    "latitude": "25",
-    "longitude": "-40"
+    "name":"2013_01_30_DisasterResponse_Q2",
+    "thumbnail_id":"T009",
+    "extent":"GLOBAL",
+    "sector":"x",
+    "latitude":25,
+    "longitude":-40
   },
   {
-    "name": "2013_01_31_Latin_America_Programs_FY13_InternalV2",
-    "thumbnail_id": "T010",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "2.1708",
-    "longitude": "-72.1042"
+    "name":"2013_01_31_Latin_America_Programs_FY13_InternalV2",
+    "thumbnail_id":"T010",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":2.1708,
+    "longitude":-72.1042
   },
   {
-    "name": "2013_03_29_RFL_MAP",
-    "thumbnail_id": "T011",
-    "extent": "USA",
-    "sector": "x",
-    "latitude": "38.895111",
-    "longitude": "-77.036667"
+    "name":"2013_03_29_RFL_MAP",
+    "thumbnail_id":"T011",
+    "extent":"USA",
+    "sector":"x",
+    "latitude":38.895111,
+    "longitude":-77.036667
   },
   {
-    "name": "2013_04_03_ARCT_FY14_Eurasia_Programs",
-    "thumbnail_id": "T012",
-    "extent": "AMEE",
-    "sector": "x",
-    "latitude": "35.7754",
-    "longitude": "84.9318"
+    "name":"2013_04_03_ARCT_FY14_Eurasia_Programs",
+    "thumbnail_id":"T012",
+    "extent":"AMEE",
+    "sector":"x",
+    "latitude":35.7754,
+    "longitude":84.9318
   },
   {
-    "name": "2013_3_28_ResponseAppeals",
-    "thumbnail_id": "T013",
-    "extent": "GLOBAL",
-    "sector": "x",
-    "latitude": "25",
-    "longitude": "-40"
+    "name":"2013_3_28_ResponseAppeals",
+    "thumbnail_id":"T013",
+    "extent":"GLOBAL",
+    "sector":"x",
+    "latitude":25,
+    "longitude":-40
   },
   {
-    "name": "AMEE_PO_Coverage_June2013",
-    "thumbnail_id": "T014",
-    "extent": "AMEE",
-    "sector": "x",
-    "latitude": "35.7754",
-    "longitude": "84.9318"
+    "name":"AMEE_PO_Coverage_June2013",
+    "thumbnail_id":"T014",
+    "extent":"AMEE",
+    "sector":"x",
+    "latitude":35.7754,
+    "longitude":84.9318
   },
   {
-    "name": "ARC_P019_metropolitan_camps_geology_analysis",
-    "thumbnail_id": "T015",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "18.502778",
-    "longitude": "-72.286111"
+    "name":"ARC_P019_metropolitan_camps_geology_analysis",
+    "thumbnail_id":"T015",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":18.502778,
+    "longitude":-72.286111
   },
   {
-    "name": "ARC_P062_v1_LAMIKA_STUDY_AREA_UNSAFE_AREAS_low",
-    "thumbnail_id": "T016",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "18.526667",
-    "longitude": "-72.333333"
+    "name":"ARC_P062_v1_LAMIKA_STUDY_AREA_UNSAFE_AREAS_low",
+    "thumbnail_id":"T016",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":18.526667,
+    "longitude":-72.333333
   },
   {
-    "name": "ARC_P066_V2_CAMPECHE_FIELD_LIGHTING_high",
-    "thumbnail_id": "T017",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "18.525",
-    "longitude": "-72.335"
+    "name":"ARC_P066_V2_CAMPECHE_FIELD_LIGHTING_high",
+    "thumbnail_id":"T017",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":18.525,
+    "longitude":-72.335
   },
   {
-    "name": "ARC_P074_DELINEATION_low",
-    "thumbnail_id": "T018",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "18.524722",
-    "longitude": "-72.334722"
+    "name":"ARC_P074_DELINEATION_low",
+    "thumbnail_id":"T018",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":18.524722,
+    "longitude":-72.334722
   },
   {
-    "name": "ARC_P09_metropolitan_camps_geology_analysis",
-    "thumbnail_id": "T019",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "18.508333",
-    "longitude": "-72.327778"
+    "name":"ARC_P09_metropolitan_camps_geology_analysis",
+    "thumbnail_id":"T019",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":18.508333,
+    "longitude":-72.327778
   },
   {
-    "name": "CaribbeanProgramsFY14",
-    "thumbnail_id": "T020",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "16.2632",
-    "longitude": "-76.0081"
+    "name":"2013_09_18_TheCaribbean_Programs_FY14",
+    "thumbnail_id":"T020",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":16.2632,
+    "longitude":-76.0081
   },
   {
-    "name": "GDPC_EngagementMap_FY2013",
-    "thumbnail_id": "T021",
-    "extent": "GLOBAL",
-    "sector": "x",
-    "latitude": "25",
-    "longitude": "-40"
+    "name":"GDPC_EngagementMap_FY2013",
+    "thumbnail_id":"T021",
+    "extent":"GLOBAL",
+    "sector":"x",
+    "latitude":25,
+    "longitude":-40
   },
   {
-    "name": "GuluFireRisk",
-    "thumbnail_id": "T022",
-    "extent": "AFRICA",
-    "sector": "x",
-    "latitude": "2.776256",
-    "longitude": "32.287621"
+    "name":"GuluFireRisk",
+    "thumbnail_id":"T022",
+    "extent":"AFRICA",
+    "sector":"x",
+    "latitude":2.776256,
+    "longitude":32.287621
   },
   {
-    "name": "LaPlata_2",
-    "thumbnail_id": "T023",
-    "extent": "LAC",
-    "sector": "x",
-    "latitude": "-34.920755",
-    "longitude": "-57.95353"
+    "name":"LaPlata_2",
+    "thumbnail_id":"T023",
+    "extent":"LAC",
+    "sector":"x",
+    "latitude":-34.920755,
+    "longitude":-57.95353
   },
   {
-    "name": "IROC",
-    "thumbnail_id": "T024",
-    "extent": "GLOBAL",
-    "sector": "ONLINE",
-    "latitude": "30",
-    "longitude": "-52"
+    "name":"IROC",
+    "thumbnail_id":"T024",
+    "extent":"GLOBAL",
+    "sector":"ONLINE",
+    "latitude":30,
+    "longitude":-52
   },
   {
-    "name": "ProgramMaps",
-    "thumbnail_id": "T025",
-    "extent": "GLOBAL",
-    "sector": "ONLINE",
-    "latitude": "25",
-    "longitude": "-40"
+    "name":"ProgramMaps",
+    "thumbnail_id":"T025",
+    "extent":"GLOBAL",
+    "sector":"ONLINE",
+    "latitude":25,
+    "longitude":-40
   },
   {
-    "name": "Caribbean",
-    "thumbnail_id": "T026",
-    "extent": "LAC",
-    "sector": "ONLINE",
-    "latitude": "14.1",
-    "longitude": "-78"
+    "name":"Caribbean",
+    "thumbnail_id":"T026",
+    "extent":"LAC",
+    "sector":"ONLINE",
+    "latitude":14.1,
+    "longitude":-78
   },
   {
-    "name": "2013_08_20_RFL_FY12-13",
-    "thumbnail_id": "T027",
-    "extent": "USA",
-    "sector": "x",
-    "latitude": "38.895111",
-    "longitude": "-77.036667"
+    "name":"2013_08_20_RFL_FY12-13",
+    "thumbnail_id":"T027",
+    "extent":"USA",
+    "sector":"x",
+    "latitude":38.895111,
+    "longitude":-77.036667
   },
   {
-    "name": "2013_01_31_Africa_Programs_FY13_External",
-    "thumbnail_id": "T028",
-    "extent": "AFRICA",
-    "sector": "x",
-    "latitude": "15.965",
-    "longitude": "14.559"
+    "name":"2013_01_31_Africa_Programs_FY13_External",
+    "thumbnail_id":"T028",
+    "extent":"AFRICA",
+    "sector":"x",
+    "latitude":15.965,
+    "longitude":14.559
   },
   {
-    "name": "2012_01_18_Africa_Programs_January2012",
-    "thumbnail_id": "T029",
-    "extent": "AFRICA",
-    "sector": "x",
-    "latitude": "15.965",
-    "longitude": "14.559"
+    "name":"2012_01_18_Africa_Programs_January2012",
+    "thumbnail_id":"T029",
+    "extent":"AFRICA",
+    "sector":"x",
+    "latitude":15.965,
+    "longitude":14.559
   },
   {
-    "name": "2011_03_14_Africa_Programs",
-    "thumbnail_id": "T030",
-    "extent": "AFRICA",
-    "sector": "x",
-    "latitude": "15.965",
-    "longitude": "14.559"
+    "name":"2011_03_14_Africa_Programs",
+    "thumbnail_id":"T030",
+    "extent":"AFRICA",
+    "sector":"x",
+    "latitude":15.965,
+    "longitude":14.559
+  },
+  {
+    "name":"2013_09_26_RFL_Grant_Recipients_2013",
+    "thumbnail_id":"T031",
+    "extent":"USA",
+    "sector":"x",
+    "latitude":38.895111,
+    "longitude":-77.036667
   }
 ]
