@@ -86,15 +86,7 @@
     "sector":"x",
     "latitude":38.895111,
     "longitude":-77.036667
-  },
-  {
-    "name":"2013_04_03_ARCT_FY14_Eurasia_Programs",
-    "thumbnail_id":"T012",
-    "extent":"AMEE",
-    "sector":"x",
-    "latitude":35.7754,
-    "longitude":84.9318
-  },
+  },  
   {
     "name":"2013_3_28_ResponseAppeals",
     "thumbnail_id":"T013",
