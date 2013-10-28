@@ -85,7 +85,7 @@ function googleTranslateElementInit() {
       <p><h6><b>Extent:</b>
       <span  id="extentButtons" style="margin-left:10px;">      
       <button id="ALL" class="btn btn-small btn-extent filtering" type="button" onclick="toggleFilter('ALL', this);" style="margin-right:10px;">All <span class="glyphicon glyphicon-check" style="margin-left:4px;"></span></button> 
-      <button id="LAC" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('LAC', this);">LACH <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+      <button id="LACH" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('LACH', this);">LACH <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
       <button id="AMEE" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('AMEE', this);">AMEE <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
       <button id="AFRICA" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('AFRICA', this);">Africa <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
       <button id="USA" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('USA', this);">Domestic <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button> 
@@ -113,7 +113,6 @@ function googleTranslateElementInit() {
           <button class="btn btn-default" type="button" style="display:inline; margin-left:20px;" onclick="refreshFilters()">Refresh Filters<span class="glyphicon glyphicon-refresh" style="margin-left:15px;"></span></a>
         </div>
 
-
         <div id="T001" class="col-sm-3 ALL DP AFRICA">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/floodRisk_thumb.jpg" alt="">
@@ -125,7 +124,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T002" class="col-sm-3 ALL PRJMGMT LAC">
+        <div id="T002" class="col-sm-3 ALL PRJMGMT LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/2011_09_29_Blocks_Nhoods_Agencies_All_CF_thumb.jpg" alt="">
             <div class="caption">            
@@ -136,7 +135,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T003" class="col-sm-3 ALL DATA LAC">
+        <div id="T003" class="col-sm-3 ALL DATA LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/2012_03_09_Campeche_Satellite_SDE_thumb.jpg" alt="">
             <div class="caption">            
@@ -147,7 +146,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T004" class="col-sm-3 ALL DP LAC">
+        <div id="T004" class="col-sm-3 ALL DP LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/2011_12_29_2YRDRR_Final_thumb.jpg" alt="">
             <div class="caption">            
@@ -159,7 +158,95 @@ function googleTranslateElementInit() {
           </a>
         </div>
 
-        <div id="T005" class="col-sm-3 ALL PRJMGMT LAC">
+        <div id="T032" class="col-sm-3 ALL PRGMAP AFRICA">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/maps/2013_10_22_Africa_Programs_FY14_Internal_thumb.jpg" alt="">
+            <div class="caption">            
+              <h4>FY14 Africa Programs (Internal) <br><small>September 2013</small></h4>        
+            </div>
+            <div class="detailedDescription">
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AFRICA team at the beginning of FY14.
+            </div>
+          </a>
+        </div>
+        <div id="T033" class="col-sm-3 ALL PRGMAP AFRICA">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/maps/2013_10_22_Africa_Programs_FY14_External_thumb.jpg" alt="">
+            <div class="caption">            
+              <h4>FY14 Africa Programs (External) <br><small>September 2013</small></h4>        
+            </div>
+            <div class="detailedDescription">
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AFRICA team at the beginning of FY14.
+            </div>
+          </a>
+        </div>
+        <div id="T034" class="col-sm-3 ALL PRGMAP LACH">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/maps/2013_10_22_Latin_America_Programs_FY14_Internal_thumb.jpg" alt="">
+            <div class="caption">            
+              <h4>FY14 LACH Programs (Internal) <br><small>September 2013</small></h4>        
+            </div>
+            <div class="detailedDescription">
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the LACH team at the beginning of FY14.
+            </div>
+          </a>
+        </div><div id="T035" class="col-sm-3 ALL PRGMAP LACH">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/maps/2013_10_22_Latin_America_Programs_FY14_External_thumb.jpg" alt="">
+            <div class="caption">            
+              <h4>FY14 LACH Programs (External) <br><small>September 2013</small></h4>        
+            </div>
+            <div class="detailedDescription">
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the LACH team at the beginning of FY14.
+            </div>
+          </a>
+        </div>
+        <div id="T036" class="col-sm-3 ALL PRGMAP AMEE">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/maps/2013_10_22_Middle_East_Europe_FY14_Internal_thumb.jpg" alt="">
+            <div class="caption">            
+              <h4>FY14 Middle East and Europe Programs (Internal)<br><small>September 2013</small></h4>        
+            </div>
+            <div class="detailedDescription">
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AMEE team at the beginning of FY14.
+            </div>
+          </a>
+        </div>
+        <div id="T037" class="col-sm-3 ALL PRGMAP AMEE">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/maps/2013_10_22_Middle_East_Europe_FY14_External_thumb.jpg" alt="">
+            <div class="caption">            
+              <h4>FY14 Middle East and Europe Programs (External) <br><small>September 2013</small></h4>        
+            </div>
+            <div class="detailedDescription">
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AMEE team at the beginning of FY14.
+            </div>
+          </a>
+        </div>
+        <div id="T038" class="col-sm-3 ALL PRGMAP AMEE">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/maps/2013_10_22_Asia_Programs_FY14_Internal_thumb.jpg" alt="">
+            <div class="caption">            
+              <h4>FY14 Asia Programs (Internal) <br><small>September 2013</small></h4>        
+            </div>
+            <div class="detailedDescription">
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AMEE team at the beginning of FY14.
+            </div>
+          </a>
+        </div>
+        <div id="T039" class="col-sm-3 ALL PRGMAP AMEE">
+          <a onclick="callModal(this);" class="thumbnail">
+            <img src="img/maps/2013_10_22_Asia_Programs_FY14_External_thumb.jpg" alt="">
+            <div class="caption">            
+              <h4>FY14 Asia Programs (External) <br><small>September 2013</small></h4>        
+            </div>
+            <div class="detailedDescription">
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AMEE team at the beginning of FY14.
+            </div>
+          </a>
+        </div>        
+
+        <div id="T005" class="col-sm-3 ALL PRJMGMT LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/2012_05_23_Central_America_LARRA_Communities_5-12_thumb.jpg" alt="">
             <div class="caption">            
@@ -181,7 +268,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T007" class="col-sm-3 ALL PRJMGMT LAC">
+        <div id="T007" class="col-sm-3 ALL PRJMGMT LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/2012_08_05_PaP_Bilateral_and_Partners_Overview_7.27.11_thumb.jpg" alt="">
             <div class="caption">            
@@ -214,14 +301,14 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T010" class="col-sm-3 ALL PRGMAP LAC">
+        <div id="T010" class="col-sm-3 ALL PRGMAP LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/2013_01_31_Latin_America_Programs_FY13_InternalV2_thumb.jpg" alt="">
             <div class="caption">            
               <h4>ARC Latin America and the Caribbean Programs <br><small>FY 2013</small></h4>        
             </div>
             <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the LAC team in the beginning of FY13 and updated midway through the year. 
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the LACH team in the beginning of FY13 and updated midway through the year. 
             </div>
           </a>
         </div>
@@ -269,7 +356,7 @@ function googleTranslateElementInit() {
            </div>
           </a>
         </div>
-        <div id="T015" class="col-sm-3 ALL PRJMGMT LAC">
+        <div id="T015" class="col-sm-3 ALL PRJMGMT LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/ARC_P019_metropolitan_camps_geology_analysis_thumb.jpg" alt="">
             <div class="caption">            
@@ -280,7 +367,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T016" class="col-sm-3 ALL ANALYSIS LAC">
+        <div id="T016" class="col-sm-3 ALL ANALYSIS LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/ARC_P062_v1_LAMIKA_STUDY_AREA_UNSAFE_AREAS_low_thumb.jpg" alt="">
             <div class="caption">            
@@ -291,7 +378,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T017" class="col-sm-3 ALL ANALYSIS LAC">
+        <div id="T017" class="col-sm-3 ALL ANALYSIS LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/ARC_P066_V2_CAMPECHE_FIELD_LIGHTING_high_thumb.jpg" alt="">
             <div class="caption">            
@@ -302,7 +389,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T018" class="col-sm-3 ALL PRJMGMT LAC">
+        <div id="T018" class="col-sm-3 ALL PRJMGMT LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/ARC_P074_DELINEATION_low_thumb.jpg" alt="">
             <div class="caption">            
@@ -313,7 +400,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T019" class="col-sm-3 ALL ANALYSIS LAC">
+        <div id="T019" class="col-sm-3 ALL ANALYSIS LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/ARC_P09_metropolitan_camps_geology_analysis_thumb.jpg" alt="">
             <div class="caption">            
@@ -324,14 +411,14 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T020" class="col-sm-3 ALL PRGMAP LAC">
+        <div id="T020" class="col-sm-3 ALL PRGMAP LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/2013_09_18_TheCaribbean_Programs_FY14_thumb.jpg" alt="">
             <div class="caption">            
               <h4>ARC Caribbean Programs <br><small> FY 2014</small></h4>        
             </div>
             <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for LAC's Caribbean team in the beginning of FY14.
+            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for LACH's Caribbean team in the beginning of FY14.
             </div>
           </a>
         </div>
@@ -357,7 +444,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T023" class="col-sm-3 ALL DATA LAC">
+        <div id="T023" class="col-sm-3 ALL DATA LACH">
           <a onclick="callModal(this);" class="thumbnail">
             <img src="img/maps/LaPlata_2_thumb.jpg" alt="">
             <div class="caption">            
@@ -386,7 +473,7 @@ function googleTranslateElementInit() {
             </div>
           </a>
         </div>
-        <div id="T026" class="col-sm-3 ALL ONLINE LAC">
+        <div id="T026" class="col-sm-3 ALL ONLINE LACH">
           <a href="http://americanredcross.github.io/ProgramMaps/Caribbean/" target="_blank" class="thumbnail">
             <img src="img/maps/Caribbean_thumb.jpg" alt="">
             <div class="caption">            
