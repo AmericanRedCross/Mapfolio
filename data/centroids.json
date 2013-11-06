@@ -63,14 +63,7 @@
     "latitude":25,
     "longitude":-40
   },
-  {
-    "name":"2013_01_31_Latin_America_Programs_FY13_InternalV2",
-    "thumbnail_id":"T010",
-    "extent":"LACH",
-    "sector":"x",
-    "latitude":2.1708,
-    "longitude":-72.1042
-  },
+
   {
     "name":"2013_03_29_RFL_MAP",
     "thumbnail_id":"T011",
@@ -231,14 +224,7 @@
     "latitude":38.895111,
     "longitude":-77.036667
   },
-  {
-    "name":"2013_10_22_Africa_Programs_FY14_Internal",
-    "thumbnail_id":"T032",
-    "extent":"AFRICA",
-    "sector":"x",
-    "latitude":15.965,
-    "longitude":14.559
-  },
+
   {
     "name":"2013_10_22_Africa_Programs_FY14_External_thumb",
     "thumbnail_id":"T033",
@@ -247,14 +233,7 @@
     "latitude":15.965,
     "longitude":14.559
   },
-  {
-    "name":"2013_10_22_Latin_America_Programs_FY14_Internal",
-    "thumbnail_id":"T034",
-    "extent":"LACH",
-    "sector":"x",
-    "latitude":2.1708,
-    "longitude":-72.1042
-  },
+
   {
     "name":"2013_10_22_Latin_America_Programs_FY14_External",
     "thumbnail_id":"T035",
@@ -263,14 +242,7 @@
     "latitude":2.1708,
     "longitude":-72.1042
   },
-  {
-    "name":"2013_10_22_Middle_East_Europe_FY14_Internal",
-    "thumbnail_id":"T036",
-    "extent":"AMEE",
-    "sector":"x",
-    "latitude":49.5584,
-    "longitude":17.1158
-  },
+
   {
     "name":"2013_10_22_Middle_East_Europe_FY14_External",
     "thumbnail_id":"T037",
@@ -279,14 +251,7 @@
     "latitude":49.5584,
     "longitude":17.1158
   },
-  {
-    "name":"2013_10_22_Asia_Programs_FY14_Internal_thumb",
-    "thumbnail_id":"T038",
-    "extent":"AMEE",
-    "sector":"x",
-    "latitude":24.7937,
-    "longitude":99.1763
-  },
+
   {
     "name":"2013_10_22_Asia_Programs_FY14_External_thumb",
     "thumbnail_id":"T039",
