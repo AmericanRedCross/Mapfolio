@@ -12,11 +12,14 @@
     <meta name="description" content="">
     <meta name="author" content="American Red Cross">
     <meta name="google-translate-customization" content="dd5207c171a5d11a-29d1c9c17ff34632-g6f9aa177fdeafd13-1a"></meta>
-    <link href="css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
     <link rel="stylesheet" href="css/markercluster.css" />
     <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
     <link href="css/custom.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -81,465 +84,52 @@ function googleTranslateElementInit() {
 
       <div class="container">
         
-      <h4>Filters: <small> Use the buttons to explore this collection and view maps from a specific region or sector of interest. For example, to view Africa program maps: click 'Africa' for extent and then click 'Program Map' to filter by that sector. The checked boxes indicate the active filters. Please be aware that we have produced maps not included here and these maps represent only a portion of the programs, activities, and engagement of the American Red Cross.</small></h4> 
 
-      <p><h6><b>Extent:</b>
-      <span  id="extentButtons" style="margin-left:10px;">      
-      <button id="ALL" class="btn btn-small btn-extent filtering" type="button" onclick="toggleFilter('ALL', this);" style="margin-right:10px;">All <span class="glyphicon glyphicon-check" style="margin-left:4px;"></span></button> 
-      <button id="LAC" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('LAC', this);">LAC <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-      <button id="AMEE" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('AMEE', this);">AMEE <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-      <button id="AFRICA" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('AFRICA', this);">Africa <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-      <button id="USA" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('USA', this);">Domestic <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button> 
-      <button id="GLOBAL" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('GLOBAL', this);">Global <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-      </span></h6></p>        
-      <p><h6><b>Sector:</b>
-      <span style="margin-left:10px;">
-      <button id="refreshSectors" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('refreshSectors', this);" style="margin-right:10px;">All <span class="glyphicon glyphicon-check" style="margin-left:4px;"></span></button>              
-      <div id="sectorButtons" class="allOn" style="display:inline;">
-        <button id="DP" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DP', this);">Disaster Preparedness <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-        <button id="PRJMGMT" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('PRJMGMT', this);">Project Management <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-        <button id="DATA" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DATA', this);">Data <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-        <button id="DR" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('DR', this);">Disaster Response <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-        <button id="PRGMAP" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('PRGMAP', this);">Program Map <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-        <button id="ANALYSIS" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('ANALYSIS', this);">Analysis <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-        <button id="ONLINE" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('ONLINE', this);">Online <span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
-      </div>
       <hr style="margin-bottom:0;">
-      </span></h6></p>
-    </div>
-      <div class="container">
-      <div class="row thumbnailGallery">
-        <div id="noThumbnails" class="col-sm-12" style="display:none;">
-          <h4 style="display:inline;">No maps match the filter settings.</h4>
-          <button class="btn btn-default" type="button" style="display:inline; margin-left:20px;" onclick="refreshFilters()">Refresh Filters<span class="glyphicon glyphicon-refresh" style="margin-left:15px;"></span></a>
-        </div>
 
-        <div id="T001" class="col-sm-3 ALL DP AFRICA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/floodRisk_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Flood Risk in the Manafwa River Basin <br><small>November 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            This map shows the relative distribution of flooding risk in the Manafwa River Basin, where the American Red Cross is implementing an early warning system leveraging community disaster preparedness skills. The ARC will use this map to better model the impact of individual flood events and so fine tune the early warning system's coverage and responsiveness.
-            </div>
-          </a>
-        </div>
-        <div id="T002" class="col-sm-3 ALL PRJMGMT LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2011_09_29_Blocks_Nhoods_Agencies_All_CF_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Outside Organizations Active in Carrefour Feuilles <br><small>August 2011</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            This map depicts the distribution and activities of NGO and government actors in different sections of the Carrefour Feuilles neighborhood of Port-au-Prince. This map was used to identify and target the most underserved and vulnerable communities in the inception stages of the LAMIKA project. It has also been used for overall situational awareness throughout the project.
-            </div>
-          </a>
-        </div>
+      <h4>How to use the mapfolio:</h4>
+        <p>
+          Double click the map to zoom in on an area of interest. Click a marker on the map or a thumbnail in the gallery below to preview the map and get the option of downloading a PDF.
+        </p>
 
-        <div id="T040" class="col-sm-3 ALL DR AMEE">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_10_24_VNM_TyphoonPaths_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Viet Nam Typhoon Paths and Intensities <br><small>October 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            After typhoon Wutip hit Viet Nam the American Red Cross deployed a disaster specialist to support the response operation with monitoring the disbursement of grants for affected families. This map was part of the map package prepared and contributes to the situational awareness of the deployed specialist.
-            </div>
-          </a>
-        </div>
+      <h4>Search for maps by:
+      <button id="textSearchBtn" class="btn btn-default btn-small activeSearchType" type="button" style="display:inline;" onclick="toggleSearchType(this)">text input</button>
+      <button id="filterSearchBtn" class="btn btn-default btn-small inactiveSearchType" type="button" style="display:inline;" onclick="toggleSearchType(this)">pre-set filters</button></h4>
 
-        <div id="T004" class="col-sm-3 ALL DP LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2011_12_29_2YRDRR_Final_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>ARC Disaster Preparedness Projects in Haiti <br><small>January 2012</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            The Haiti Earthquake Two Year Report used maps to meet donor demands for more detailed accounting of how money was being spent. 6 maps depicting the extent of ARC programming in different sectors were produced, one of these being the above map of ARC-funded Disaster Preparedness Activities.
-            </div>
-          </a>
-        </div>
-
-        <!-- <div id="T032" class="col-sm-3 ALL PRGMAP AFRICA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_10_22_Africa_Programs_FY14_Internal_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>FY14 Africa Programs (Internal) <br><small>September 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AFRICA team at the beginning of FY14.
-            </div>
-          </a>
-        </div> -->
-        <div id="T033" class="col-sm-3 ALL PRGMAP AFRICA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_10_22_Africa_Programs_FY14_External_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>FY14 Africa Programs (External) <br><small>September 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AFRICA team at the beginning of FY14.
-            </div>
-          </a>
-        </div>
-        <!-- <div id="T034" class="col-sm-3 ALL PRGMAP LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_10_22_Latin_America_Programs_FY14_Internal_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>FY14 LAC Programs (Internal) <br><small>September 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the LAC team at the beginning of FY14.
-            </div>
-          </a> -->
-        </div><div id="T035" class="col-sm-3 ALL PRGMAP LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_10_22_Latin_America_Programs_FY14_External_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>FY14 LAC Programs (External) <br><small>September 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the LAC team at the beginning of FY14.
-            </div>
-          </a>
-        </div>
-   <!--      <div id="T036" class="col-sm-3 ALL PRGMAP AMEE">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_10_22_Middle_East_Europe_FY14_Internal_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>FY14 Middle East and Europe Programs (Internal)<br><small>September 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AMEE team at the beginning of FY14.
-            </div>
-          </a>
-        </div> -->
-        <div id="T037" class="col-sm-3 ALL PRGMAP AMEE">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_10_22_Middle_East_Europe_FY14_External_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>FY14 Middle East and Europe Programs (External) <br><small>September 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AMEE team at the beginning of FY14.
-            </div>
-          </a>
-        </div>
-<!--         <div id="T038" class="col-sm-3 ALL PRGMAP AMEE">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_10_22_Asia_Programs_FY14_Internal_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>FY14 Asia Programs (Internal) <br><small>September 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AMEE team at the beginning of FY14.
-            </div>
-          </a>
-        </div> -->
-        <div id="T039" class="col-sm-3 ALL PRGMAP AMEE">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_10_22_Asia_Programs_FY14_External_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>FY14 Asia Programs (External) <br><small>September 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AMEE team at the beginning of FY14.
-            </div>
-          </a>
-        </div>  
-
-         <div id="T003" class="col-sm-3 ALL DATA LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2012_03_09_Campeche_Satellite_SDE_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Cempeche Satellite <br><small>August 2011</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Combining high-resolution satellite imagery with IOM-provided neighborhood boundary lines allowed the ARC to visualize the exact extent and physical layout of the Campeche neighborhood during the early stages of the LAMIKA project. This provided staff and managers with a basic familiarity with the project site from a very early stage of the project.
-            </div>
-          </a>
-        </div>      
-
-        <div id="T006" class="col-sm-3 ALL PRJMGMT AMEE">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2012_06_12_MyanmarFinal_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Myanmar <br><small>June 2012</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Accessing refugee populations and others separated from their loved ones by war can be difficult in Myanmar: ongoing conflicts and government restrictions both constrict the extent of American Red Cross Restoring Family Links activities. Restoring Family Links staff used this map to plan activities in Myanmar and explain to partners and donors outside limits on their activities.
-            </div>
-          </a>
-        </div>
-        <div id="T007" class="col-sm-3 ALL PRJMGMT LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2012_08_05_PaP_Bilateral_and_Partners_Overview_7.27.11_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>American Red Cross Operations in Greater Port-Au-Prince <br><small>July 27, 2011</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            The American Red Cross implemented or sponsored an enormous number of camp-based activities aross five sectors during the response phase of the Haiti Assistance Program. To keep track of these activities and enhance overall situational awareness, a map depicting the extent and sectoral distribution of ARC-funded activities was produced and updated on a monthly basis.
-            </div>
-          </a>
-        </div>
-        <div id="T008" class="col-sm-3 ALL PRJMGMT AFRICA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2012_08_17_Cases_v_Volunteers_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Sierra Leone Red Cross Volunteers vs. Reported Cholera Cases <br><small>August 17, 2012</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            FACT team members responding to the cholera outbreak in Sierra Leone last August faced enormous difficulty relating tabular data on the cholera outbreak's extent and impact with tabular data on the distribution of health-trained Sierra Leone Red Cross volunteers. A number of maps were produced relating the two, allowing responders to spot gaps in coverage and areas of strength. The map proved wildly successful and extremely popular even outside the Red Cross Movement; FACT team members were invited to high-level meetings at the Ministry of Health solely on the strength of the maps they offered.
-            </div>
-          </a>
-        </div>
-        <div id="T009" class="col-sm-3 ALL DR GLOBAL">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_01_30_DisasterResponse_Q2_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>International Emergency Responses <br><small>July-December 2012</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Making sense of all the emergency responses launched by the IROC in a given year can be difficult. To overcome this the GIS team produced a map for the IROC team summarizing the extent and impact of their work during Q1 and Q2 of FY13. IROC information management staff were trained to update the map themselves and so provide the IROC with a bi-weekly snapshot of their work.
-            </div>
-          </a>
-        </div>
-        <!-- <div id="T010" class="col-sm-3 ALL PRGMAP LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_01_31_Latin_America_Programs_FY13_InternalV2_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>ARC Latin America and the Caribbean Programs <br><small>FY 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the LAC team in the beginning of FY13 and updated midway through the year. 
-            </div>
-          </a>
-        </div> -->
-        <div id="T011" class="col-sm-3 ALL PRGMAP USA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_03_29_RFL_MAP_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Restoring Family Links Casework and Resources <br><small>2011-2012</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            The Restoring Family Links team needed to see and explain how the distribution of their mentors, advocates and caseworkers matched up with the distribution of casework in the United States. The GIS team helped them organize their data and provide a breakdown of resources vs. workload by Red Cross region. This map is used by the RFL team to explain their to donors, represent themselves at conferences, and for day-to-day situational awareness and decision making.
-            </div>
-          </a>
-        </div>
-
-        <div id="T013" class="col-sm-3 ALL DR GLOBAL">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_3_28_ResponseAppeals_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>International Emergency Appeals <br><small>January 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Making sense of all the emergency appeals launched by the IFRC in a given year can be difficult. To overcome this the GIS team produced a map for the IROC team summarizing the Federation's emergency appeals in Q1 and Q2 of FY13. IROC information management staff were trained to update the map themselves and so provide the IROC with a quarterly snapshot.
-            </div>
-          </a>
-        </div>
-        <div id="T014" class="col-sm-3 ALL PRJMGMT AMEE">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/AMEE_PO_Coverage_June2013_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>AMEE Program Officer Coverage <br><small>June 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            AMEE is IRP's largest region: it houses the largest number of delegations, program officers, and overall programs. With roles and responsibilities having significantly changed over the past year, a need was seen for a simple explanation of AMEE's footprint and mandate. The GIS team created a map showing the active programs and disaster appeal coverage for every PO within the region, along with the actual locations of the delegations and locally staffed offices they support. AMEE uses this map for internal reference and explanation to outside partners.
-           </div>
-          </a>
-        </div>
-        <div id="T015" class="col-sm-3 ALL PRJMGMT LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/ARC_P019_metropolitan_camps_geology_analysis_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>P019 Metropolitan Geology Analysis <br><small>May 21, 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Camp solutions implementation in Haiti can be a difficult process. Geomorphic factors, financial considerations, long term livelihoods building, existing infrastructure and land titles are but some of the most important inputs shaping camp resettlement policymaking. The HAP team's GIS staff have helped make sense of all these factors by contextualizing them through maps.
-            </div>
-          </a>
-        </div>
-        <div id="T016" class="col-sm-3 ALL ANALYSIS LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/ARC_P062_v1_LAMIKA_STUDY_AREA_UNSAFE_AREAS_low_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>P062 Lamika Study Area Unsafe Areas <br><small>January 16, 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Safety is a high-priority concern for residents of Campeche, the neighborhood hosting the ARC's LAMIKA project. Understanding the spatial distribution of safety concerns and managing them is crucial to implementing successful integrated programming. HAP's GIS team prepared a number of maps showing which streets were most problematic, allowing HAP staff to precisely target problem areas.
-            </div>
-          </a>
-        </div>
-        <div id="T017" class="col-sm-3 ALL ANALYSIS LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/ARC_P066_V2_CAMPECHE_FIELD_LIGHTING_high_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>P066 Campeche Field Lighting <br><small>November 19, 2012</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            This map shows the outcome of situating solar-powered street lamps within the Campeche neighborhood hosting the ARC's LAMIKA project in Haiti. The highest value areas for this intervention were identified using the previous map.
-            </div>
-          </a>
-        </div>
-        <div id="T018" class="col-sm-3 ALL PRJMGMT LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/ARC_P074_DELINEATION_low_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>P074_Study Area for IOM Enumeration + Tapis Rouge Camp, Delineation <br><small>November 20, 2012</small></h4>
-            </div>
-            <div class="detailedDescription">
-            This map summarizes the basic infrastructure within and limits of the Campeche neighborhood, where the ARC's HAP program is implementing its LAMIKA project. All of this is referenced against a high-resolution satellite image taken by satellite. Project staff have used this map to understand movement within the neighborhood in the context of underlying terrain and infrastructure.  
-            </div>
-          </a>
-        </div>
-        <div id="T019" class="col-sm-3 ALL ANALYSIS LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/ARC_P09_metropolitan_camps_geology_analysis_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>P09 Metropolitan Camps Geology Analysis <br><small>May 17, 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Camp solutions implementation in Haiti can be a difficult process. Geomorphic factors, financial considerations, long term livelihoods building, existing infrastructure and land titles are but some of the most important inputs shaping camp resettlement policymaking. The HAP team's GIS staff have helped make sense of all these factors by contextualizing them through maps.
-            </div>
-          </a>
-        </div>
-        <div id="T020" class="col-sm-3 ALL PRGMAP LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_09_18_TheCaribbean_Programs_FY14_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>ARC Caribbean Programs <br><small> FY 2014</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for LAC's Caribbean team in the beginning of FY14.
-            </div>
-          </a>
-        </div>
-        <div id="T021" class="col-sm-3 ALL PRGMAP GLOBAL">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/GDPC_2pgEngagementMap_FY2013_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>GDPC Engagement <br><small> FY 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Explaining the extent of our work to donors and partners is one of the most important things we can do. It ensures continued funding, heightens accountability, acknowledges partnerships and creates opportunities for productive future collaboration. The Global Disaster Preparedness Center uses maps to summarize the breadth of their activities and partnerships in FY13.  
-            </div>
-          </a>
-        </div>
-        <div id="T022" class="col-sm-3 ALL ANALYSIS AFRICA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/GuluFireRisk_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Areas of Increased Fire Risk in Gulu, Uganda <br><small>September 2012</small></h4>       
-            </div>
-            <div class="detailedDescription">
-            Accurately targeting the vulnerable communities within a project area can be extremely difficult. Secondary data is usually spotty or non-existent and local knowledge extremely colloquial. Even rudimentary GIS analysis can greatly clarify the distribution of hazards and risk factors. In Uganda, the GIS team mapped the built infrastructure of the cities of Gulu and Lira and then created maps showing the distribution of thatched-roof huts likely to catch fire.   
-            </div>
-          </a>
-        </div>
-        <div id="T023" class="col-sm-3 ALL DATA LAC">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/LaPlata_2_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>La Plata, Buenos Aires - Satellite <br><small>April 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Satellite imagery can play an important part in response operations, when real-time data on hazards or damages can accurately direct potentially lifesaving response resources. The GIS team quickly procured satellite imagery for IFRC and Argentine Red Cross responders in La Plata, Argentina when it flooded in April 2013. This data was used to identify locations for NFI distribution sites within La Plata.
-            </div>
-          </a>
-        </div>
-
-        <!-- do we want a method of delivery for a detailed description for online maps? -->
-        <div id="T024" class="col-sm-3 ALL ONLINE GLOBAL">
-          <a href="http://americanredcross.github.io/IROC_ResponseMap/" target="_blank" class="thumbnail">
-            <img src="img/maps/IROC_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Interactive IROC Response Map<br><small>(opens in new window)</small></h4>        
-            </div>            
-          </a>
-        </div>
-        <div id="T025" class="col-sm-3 ALL ONLINE GLOBAL">
-          <a href="http://americanredcross.github.io/ProgramMaps/" target="_blank" class="thumbnail">
-            <img src="img/maps/ProgramMaps_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Interactive World Programs Map <br><small>(opens in new window)</small></h4>        
-            </div>
-          </a>
-        </div>
-        <div id="T026" class="col-sm-3 ALL ONLINE LAC">
-          <a href="http://americanredcross.github.io/ProgramMaps/Caribbean/" target="_blank" class="thumbnail">
-            <img src="img/maps/Caribbean_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Interactive Caribbean Programs Map <br><small>(opens in new window)</small></h4>        
-            </div>
-          </a>
-        </div>
-
-        <div id="T027" class="col-sm-3 ALL PRGMAP USA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_08_20_RFL_FY12-13_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Restoring Family Links Casework and Resources <br><small>2012-2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            The Restoring Family Links team needed to see and explain how the distribution of their mentors, advocates and caseworkers matched up with the distribution of casework in the United States. The GIS team helped them organize their data and provide a breakdown of resources vs. workload by Red Cross region. This map is used by the RFL team to explain their to donors, represent themselves at conferences, and for day-to-day situational awareness and decision making.
-            </div>
-          </a>
-        </div>
-
-        <div id="T028" class="col-sm-3 ALL PRGMAP AFRICA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_01_31_Africa_Programs_FY13_External_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Africa Programs <br><small> 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AFRICA team at the beginning of FY13.
-            </div>
-          </a>
-        </div>
-        <div id="T029" class="col-sm-3 ALL PRGMAP AFRICA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2012_01_18_Africa_Programs_January2012_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Africa Programs <br><small> 2012</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AFRICA team at the beginning of FY12.
-            </div>
-          </a>
-        </div>
-        <div id="T030" class="col-sm-3 ALL PRGMAP AFRICA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2011_03_14_Africa_Programs_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Africa Programs <br><small> 2011</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            Regularly updated overview maps help regional IRP staff understand their work at a glance and explain it to others. This map was made for the AFRICA team at the beginning of FY11.
-            </div>
-          </a>
-        </div>
-        <div id="T031" class="col-sm-3 ALL PRGMAP USA">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/2013_09_26_RFL_Grant_Recipients_2013_thumb.jpg" alt="">
-            <div class="caption">            
-              <h4>Restoring Family Links Grant Recipients<br><small> 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            The Restoring Family Links team wanted a visualization of grant recipients in 2013. This map is used by the RFL team to recognize the American Red Cross chapters and regions awarded various grants.
-            </div>
-          </a>
-        </div>
-
-
-
-
-      </div> <!-- /row  -->
+      <div style="padding-top:15px;">
       
-    </div><!--/container-->
+        <div id="filterSearch" style="display:none;">
+            <p>
+              Use the filter buttons to explore this collection. The extent filters will return maps from any of the checked areas. For example you can filter for maps that are from either "Ormoc" <u>or</u> "Tacloban." The type filters will return only maps tagged with <u>every</u> checked type. You can also filter for maps that are tagged as both "OSM" <u>and</u> "Poster."
+            </p> 
+          <p><h6>
+            <b>Extent Filters:</b>
+            <span  id="extentButtons" style="margin-left:10px;"></span>
+          </h6></p>  
+          <p><h6>
+            <b>Type Filters:</b>
+            <span id ="sectorButtons" style="margin-left:10px;"></span>
+          </h6></p>
+          <p>
+            <button class="btn btn-default btn-mini" type="button" onclick='toggleFilter("REFRESH", this);'>Refresh Filters<span class="glyphicon glyphicon-refresh" style="margin-left:15px;"></span></button>
+          </p>      
+        </div>    
     
+        <div id="textSearch" class="thumbnails-head">
+            <div class="pull-left" style="display:inline; margin-right:10px;">Type search terms here:</div>          
+            <div id="form"></div>
+            <div class="clear"></div>          
+        </div> 
+
+      </div> 
+
+      <hr style="margin-bottom:0;">   
+      
+      <div id="gallery" class="row"></div> 
+              
+    </div>
+
+   
     <hr style="margin-bottom:10px;">
     <footer>
       <div class="disclaimer pull-right">
@@ -550,9 +140,10 @@ function googleTranslateElementInit() {
     </div>
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
+    <script src="js/jquery.lazyload.js" type="text/javascript"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/leaflet.markercluster-src.js"></script>
+    <script src="js/leaflet.markercluster.js"></script>
     <script src="js/main.js"></script>
 
      <script>
