@@ -33,13 +33,16 @@ var mapUrl = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 var mapAttribution = 'Map data &copy; <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a> | Map style by <a href="http://hot.openstreetmap.org" target="_blank">H.O.T.</a> | &copy; <a href="http://redcross.org" title="Red Cross" target="_blank">Red Cross</a> 2013 | <a title="Disclaimer" onClick="showDisclaimer();">Disclaimer</a>';
 var mapTiles = L.tileLayer(mapUrl, {attribution: mapAttribution});
 
+countries = new L.layerGroup();
+
 var map = L.map('map', {   
-    zoom: 0,
+    zoom: 3,
+    center: [0,0],
     maxZoom: 15,
     scrollWheelZoom: false,
-    layers: [mapTiles]
+    layers: [countries]
 });
-mapTiles.setOpacity(0); 
+// mapTiles.setOpacity(0); 
 
 // change display accordingly to the zoom level
 // function mapDisplay() {
@@ -126,10 +129,10 @@ function getWorld() {
         timeout: 10000,
         success: function(json) {
             worldcountries = json;
-            // countries = new L.layerGroup().addTo(map);
-            // geojson = L.geoJson(worldcountries,{
-            //     style: countryStyle
-            // }).addTo(countries);
+            
+            geojson = L.geoJson(worldcountries,{
+                style: countryStyle
+            }).addTo(countries);
             getCentroids();
         },
         error: function(e) {
@@ -203,10 +206,10 @@ function generatepreviewhtml(){
 
 function generateFilterButtons(){
     extentTags.sort();
-    var extentFilterHtml = '<button id="ALL-EXTENT" class="btn btn-small btn-extent filtering all" type="button" onclick="toggleFilter('+"'ALL-EXTENT'"+', this);"'+
+    var extentFilterHtml = '<button id="ALL-EXTENT" class="btn btn-sm btn-extent filtering all" type="button" onclick="toggleFilter('+"'ALL-EXTENT'"+', this);"'+
         ' style="margin-right:10px;">All<span class="glyphicon glyphicon-check" style="margin-left:4px;"></span></button>';
     $.each(extentTags, function(index, tag){
-        var itemHtml = '<button id="'+tag+'" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('+"'"+tag+"'"+', this);">'+tag+
+        var itemHtml = '<button id="'+tag+'" class="btn btn-sm btn-extent" type="button" onclick="toggleFilter('+"'"+tag+"'"+', this);">'+tag+
             '<span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>';
         extentFilterHtml += itemHtml;    
     });
@@ -214,10 +217,10 @@ function generateFilterButtons(){
     extentButtons = $("#extentButtons").children();
 
     sectorTags.sort();
-    var sectorFilterHtml = '<button id="ALL-SECTOR" class="btn btn-small btn-sector filtering all" type="button" onclick="toggleFilter('+"'ALL-SECTOR'"+', this);"'+ 
+    var sectorFilterHtml = '<button id="ALL-SECTOR" class="btn btn-sma btn-sector filtering all" type="button" onclick="toggleFilter('+"'ALL-SECTOR'"+', this);"'+ 
         'style="margin-right:10px;">All <span class="glyphicon glyphicon-check" style="margin-left:4px;"></span></button>';
     $.each(sectorTags, function(index, tag){
-        var itemHtml = '<button id="'+tag+'" class="btn btn-small btn-sector" type="button" onclick="toggleFilter('+"'"+tag+"'"+', this);">'+tag+
+        var itemHtml = '<button id="'+tag+'" class="btn btn-sm btn-sector" type="button" onclick="toggleFilter('+"'"+tag+"'"+', this);">'+tag+
             '<span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>';
         sectorFilterHtml += itemHtml;
     });
@@ -407,13 +410,13 @@ function markersToMap(){
         }            
     });
     markers.addLayer(marker);
-    // markers.addTo(map);
-    // markersBounds = markers.getBounds();
-    // markersBounds._northEast.lat += 5;
-    // markersBounds._northEast.lng += 5;
-    // markersBounds._southWest.lat -= 5;
-    // markersBounds._southWest.lat -= 5;
-    // map.fitBounds(markersBounds);
+    markers.addTo(map);
+    markersBounds = markers.getBounds();
+    markersBounds._northEast.lat += 5;
+    markersBounds._northEast.lng += 5;
+    markersBounds._southWest.lat -= 5;
+    markersBounds._southWest.lat -= 5;
+    map.fitBounds(markersBounds);
 } 
 
 
