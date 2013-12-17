@@ -12,14 +12,14 @@
     <meta name="description" content="">
     <meta name="author" content="American Red Cross">
     <meta name="google-translate-customization" content="dd5207c171a5d11a-29d1c9c17ff34632-g6f9aa177fdeafd13-1a"></meta>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-glyphicons.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+ <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.ie.css" />
+ <![endif]-->
     <link rel="stylesheet" href="css/markercluster.css" />
     <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
 
     <link href="css/custom.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -65,25 +65,26 @@ function googleTranslateElementInit() {
 
 <div id="myModal" class="modal fade">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
+    <div class="modal-content">           
       <div class="modal-body" style="text-align:center;">
         <img class="modal-img" src="">
       </div>
       <div class="modal-footer">
         <div class="modal-detailedDescription"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <a id="downloadPDF" href="#" target="_blank" class="btn btn-primary">Download PDF</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
       <div class="container">
-        
+      
+      <div class="collaborationText">
+        <p>The GIS office at American Red Cross is deeply involved in international disaster response and disaster preparedness programs throughout the world. This page shows some of the maps we've made for our friends at Red Cross, folks in the field and our operations centers.</p>
+        <p>Please report any issues to <a href="mailto://daniel.joseph@redcross.org">Daniel Joseph</a> or using <a href="https://github.com/AmericanRedCross/Mapfolio/issues" target="_blank">GitHub</a>.</p>
+      </div>
 
       <hr style="margin-bottom:0;">
 
@@ -100,7 +101,7 @@ function googleTranslateElementInit() {
       
         <div id="filterSearch" style="display:none;">
             <p>
-              Use the filter buttons to explore this collection. The extent filters will return maps from any of the checked areas. For example you can filter for maps that are from either "Ormoc" <u>or</u> "Tacloban." The type filters will return only maps tagged with <u>every</u> checked type. You can also filter for maps that are tagged as both "OSM" <u>and</u> "Poster."
+              Use the filter buttons to explore this collection. The extent filters will return maps from any of the checked areas. For example you can filter for maps that are from either "Africa" <u>or</u> "LAC." The type filters will return only maps tagged with <u>every</u> checked type. For example you can filter for maps that are tagged as both "Analysis" <u>and</u> "Haiti."
             </p> 
           <p><h6>
             <b>Extent Filters:</b>
@@ -116,9 +117,9 @@ function googleTranslateElementInit() {
         </div>    
     
         <div id="textSearch" class="thumbnails-head">
-            <div class="pull-left" style="display:inline; margin-right:10px;">Type search terms here:</div>          
+            <div class="pull-left" style="display:inline; margin-right:10px;">Type search terms (for example, "Haiti") here:</div>          
             <div id="form"></div>
-            <div class="clear"></div>          
+            <div class="clear"></div>           
         </div> 
 
       </div> 

@@ -34,27 +34,28 @@ var mapAttribution = 'Map data &copy; <a href="http://openstreetmap.org" target=
 var mapTiles = L.tileLayer(mapUrl, {attribution: mapAttribution});
 
 var map = L.map('map', {   
-    zoom: 0,
-    maxZoom: 15,
+    zoom: 1,
+    maxZoom: 10,
+    center: [0,0],
     scrollWheelZoom: false,
     layers: [mapTiles]
 });
 mapTiles.setOpacity(0); 
 
 // change display accordingly to the zoom level
-// function mapDisplay() {
-//     var remove = {fillOpacity:0, opacity:0}
-//     var add = {fillOpacity:1, opacity:1}
-//     map.on('viewreset', function() {
-//         if (map.getZoom() < 6) {
-//             cloudmade.setOpacity(0);
-//             geojson.setStyle(add);
-//         } else {
-//             geojson.setStyle(remove);
-//             cloudmade.setOpacity(1);
-//         }
-//     })
-// }
+function mapDisplay() {
+    var remove = {fillOpacity:0, opacity:0}
+    var add = {fillOpacity:1, opacity:1}
+    map.on('viewreset', function() {
+        if (map.getZoom() < 5) {
+            mapTiles.setOpacity(0);
+            geojson.setStyle(add);
+        } else {
+            geojson.setStyle(remove);
+            mapTiles.setOpacity(1);
+        }
+    })
+}
 
 // on marker click open modal
 function centroidClick (e) {
@@ -81,11 +82,13 @@ function clearName(e) {
 function callModal (item) {
     var modalDescription = $(item).find('.modalDescription').html();    
     var mapJpg = $(item).find('img').attr("data-original").slice(0,-10) + '.jpg';
+    var pdfSrc = 'pdf/' + $(item).find('img').attr("data-original").slice(9,-10) + '.pdf'
     var img_maxHeight = (windowHeight*0.60).toString() + "px";
     $(".modal-detailedDescription").empty();    
     $(".modal-detailedDescription").html(modalDescription); 
     $(".modal-img").css('max-height', img_maxHeight);
     $(".modal-img").attr('src', mapJpg);
+    $('#downloadPDF').attr('href', pdfSrc);
     $('#myModal').modal();       
 }
 
@@ -126,10 +129,10 @@ function getWorld() {
         timeout: 10000,
         success: function(json) {
             worldcountries = json;
-            // countries = new L.layerGroup().addTo(map);
-            // geojson = L.geoJson(worldcountries,{
-            //     style: countryStyle
-            // }).addTo(countries);
+            countries = new L.layerGroup().addTo(map);
+            geojson = L.geoJson(worldcountries,{
+                style: countryStyle
+            }).addTo(countries);
             getCentroids();
         },
         error: function(e) {
@@ -147,7 +150,7 @@ function getCentroids() {
         timeout: 10000,
         success: function(data) {
             mapData = data;
-            // mapDisplay();
+            mapDisplay();
             generatepreviewhtml();
         },
         error: function(e) {
@@ -177,8 +180,7 @@ function generatepreviewhtml(){
                         '<h4 style="font-weight:bold;">'+item.title+' <small>('+formatDate(item.productionDate)+')</small></h4>'+                        
                         '<p style="font-size:small; margin:6px 0 0 10px;">'+item.narrative+'</p>'+
                         '<p style="font-size:small; margin:6px 0 0 10px;"><b>Extent tags:</b> '+item.extent.replace(/\s/g, ', ')+'</p>'+                         
-                        '<p style="font-size:small; margin:6px 0 0 10px;"><b>Type tags:</b> '+item.sector.replace(/\s/g, ', ')+'</p>'+
-                        '<br><a class="btn btn-primary btn-mini" href="pdf/'+item.fileName+'.pdf" target="_blank">Download PDF</a>'+ 
+                        '<p style="font-size:small; margin:6px 0 0 10px;"><b>Type tags:</b> '+item.sector.replace(/\s/g, ', ')+'</p>'+                         
                     '</div>'+   
                '</div>'+
             '</div>';
@@ -407,13 +409,13 @@ function markersToMap(){
         }            
     });
     markers.addLayer(marker);
-    // markers.addTo(map);
-    // markersBounds = markers.getBounds();
-    // markersBounds._northEast.lat += 5;
-    // markersBounds._northEast.lng += 5;
-    // markersBounds._southWest.lat -= 5;
-    // markersBounds._southWest.lat -= 5;
-    // map.fitBounds(markersBounds);
+    markers.addTo(map);
+    markersBounds = markers.getBounds();
+    markersBounds._northEast.lat += 2;
+    markersBounds._northEast.lng += 2;
+    markersBounds._southWest.lat -= 2;
+    markersBounds._southWest.lat -= 2;
+    map.fitBounds(markersBounds);
 } 
 
 
@@ -423,49 +425,9 @@ $(window).resize(function(){
 })
 
 
-// Search Box
-// (function ($) {
-//   jQuery.expr[':'].Contains = function(a,i,m){
-//       return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
-//   };
-  
-//   function filterList(header, list) {
-//     var form = $("<form>").attr({"class":"filterform","action":"#"}),
-//         input = $("<input>").attr({"class":"filterinput","type":"text"});
-//     $(form).append(input).appendTo(header);
-  
-//     $(input)
-//       .change( function () {
-//             var filters = $(this).val().match(/\S+/g);
-//             $.each(thumbnails, function(index, thumbnail){
-//                 $(thumbnail).removeClass("noSearchMatch").removeClass("mapped");
-//             });
-//             if(filters) {
-//                 $.each(filters, function(index, filter){
-//                     $matches = $(list).find('.thumbnailWrap:Contains(' + filter + ')');
-//                     $('.thumbnailWrap', list).not($matches).addClass("noSearchMatch");
-//                 });  
-//             } else {
-//                 $(thumbnails).find(".thumbnailWrap").show();
-//             }
-//             $.each(thumbnails, function(index, thumbnail){
-//                 if($(thumbnail).hasClass("noSearchMatch")){
-//                     $(thumbnail).hide();
-//                 } else {
-//                     $(thumbnail).addClass("mapped").show();
-//                 }
-//             });
-//             markersToMap();
-//             return false;                   
-//         }) 
-//       .keyup( function () {            
-//             $(this).change();
-//         });
-//   }  
-//   $(function () {
-//     filterList($("#form"), $("#mappreviews"));
-//   });
-// }(jQuery));
+
+
+
 
 
 // reset map bounds using Zoom to Extent button
@@ -490,6 +452,51 @@ $('.twitterpopup').click(function(event) {
 
     return false;
 });
+
+
+// Search Box
+(function ($) {
+  jQuery.expr[':'].Contains = function(a,i,m){
+      return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+  };
+  
+  function filterList(header, list) {
+    var form = $("<form>").attr({"class":"filterform","action":"#"}),
+        input = $("<input>").attr({"class":"filterinput","type":"text"});
+    $(form).append(input).appendTo(header);
+  
+    $(input)
+      .change( function () {
+            var filters = $(this).val().match(/\S+/g);
+            $.each(thumbnails, function(index, thumbnail){
+                $(thumbnail).removeClass("noSearchMatch").removeClass("mapped");
+            });
+            if(filters) {
+                $.each(filters, function(index, filter){
+                    $matches = $(list).find('.thumbnailWrap:Contains(' + filter + ')');
+                    $('.thumbnailWrap', list).not($matches).addClass("noSearchMatch");
+                });  
+            } else {
+                $(thumbnails).find(".thumbnailWrap").show();
+            }
+            $.each(thumbnails, function(index, thumbnail){
+                if($(thumbnail).hasClass("noSearchMatch")){
+                    $(thumbnail).hide();
+                } else {
+                    $(thumbnail).addClass("mapped").show();
+                }
+            });
+            markersToMap();
+            return false;                   
+        }) 
+      .keyup( function () {            
+            $(this).change();
+        });
+  }  
+  $(function () {
+    filterList($("#form"), $("#gallery"));
+  });
+}(jQuery));
 
 // start function chain to initialize map
 getWorld();
