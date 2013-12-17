@@ -42,7 +42,7 @@ var map = L.map('map', {
     scrollWheelZoom: false,
     layers: [countries]
 });
-mapTiles.setOpacity(0); 
+// mapTiles.setOpacity(0); 
 
 // change display accordingly to the zoom level
 function mapDisplay() {
