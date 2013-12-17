@@ -33,14 +33,12 @@ var mapUrl = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 var mapAttribution = 'Map data &copy; <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a> | Map style by <a href="http://hot.openstreetmap.org" target="_blank">H.O.T.</a> | &copy; <a href="http://redcross.org" title="Red Cross" target="_blank">Red Cross</a> 2013 | <a title="Disclaimer" onClick="showDisclaimer();">Disclaimer</a>';
 var mapTiles = L.tileLayer(mapUrl, {attribution: mapAttribution});
 
-countries = new L.layerGroup();
-
 var map = L.map('map', {   
     zoom: 1,
     maxZoom: 10,
     center: [0,0],
     scrollWheelZoom: false,
-    layers: [countries]
+    layers: [mapTiles]
 });
 // mapTiles.setOpacity(0); 
 
