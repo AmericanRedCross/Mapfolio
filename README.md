@@ -1,7 +1,7 @@
 Mapfolio
 ========
 
-#### [http://americanredcross.github.io/Mapfolio/](http://americanredcross.github.io/Mapfolio/) ####
+#### taken down until we are able to update it ####
 
 Interactive portfolio to exhibit map products of the [American Red Cross](http://redcross.org/) International Services GIS team. 
 
